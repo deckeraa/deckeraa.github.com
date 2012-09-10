@@ -5,13 +5,5 @@
   <link href="http://blog.example.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://blog.example.comindex.xml</id>
-  <entry><title type="html">Test Post 2</title><author><name>nil</name></author><link href="http://blog.example.com/blog/2012/09/02_test-post-2.html"/><updated>2012-09-02T02:48:00Z</updated><published>2012-09-02T02:48:00Z</published><id>blog/2012/09/02_test-post-2.html</id><category scheme="/tags/lisp.html" term="lisp" label="lisp"/><content type="html">&lt;p&gt;
-This is the third test post
-&lt;/p&gt;</content></entry><entry><title type="html">Test Post 1</title><author><name>nil</name></author><link href="http://blog.example.com/blog/2012/09/02_test-post-1.html"/><updated>2012-09-02T02:46:00Z</updated><published>2012-09-02T02:46:00Z</published><id>blog/2012/09/02_test-post-1.html</id><category scheme="/tags/haskell.html" term="haskell" label="haskell"/><category scheme="/tags/test.html" term="test" label="test"/><category scheme="/tags/lisp.html" term="lisp" label="lisp"/><content type="html">&lt;p&gt;
-This is the second test post.
-&lt;/p&gt;</content></entry><entry><title type="html">Test Post 0</title><author><name>nil</name></author><link href="http://blog.example.com/blog/2012/09/02_test-post-0.html"/><updated>2012-09-02T02:21:00Z</updated><published>2012-09-02T02:21:00Z</published><id>blog/2012/09/02_test-post-0.html</id><category scheme="/tags/test.html" term="test" label="test"/><category scheme="/tags/lisp.html" term="lisp" label="lisp"/><content type="html">&lt;p&gt;
-This is the first test post.
-&lt;/p&gt;
-
-</content></entry>
+  
 </feed>

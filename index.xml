@@ -5,13 +5,159 @@
   <link href="http://blog.example.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://blog.example.comindex.xml</id>
-  <entry><title type="html">Test Post 2</title><author><name>nil</name></author><link href="http://blog.example.com/blog/2012/09/02_test-post-2.html"/><updated>2012-09-02T02:48:00Z</updated><published>2012-09-02T02:48:00Z</published><id>blog/2012/09/02_test-post-2.html</id><category scheme="/tags/lisp.html" term="lisp" label="lisp"/><content type="html">&lt;p&gt;
-This is the third test post
-&lt;/p&gt;</content></entry><entry><title type="html">Test Post 1</title><author><name>nil</name></author><link href="http://blog.example.com/blog/2012/09/02_test-post-1.html"/><updated>2012-09-02T02:46:00Z</updated><published>2012-09-02T02:46:00Z</published><id>blog/2012/09/02_test-post-1.html</id><category scheme="/tags/haskell.html" term="haskell" label="haskell"/><category scheme="/tags/test.html" term="test" label="test"/><category scheme="/tags/lisp.html" term="lisp" label="lisp"/><content type="html">&lt;p&gt;
-This is the second test post.
-&lt;/p&gt;</content></entry><entry><title type="html">Test Post 0</title><author><name>nil</name></author><link href="http://blog.example.com/blog/2012/09/02_test-post-0.html"/><updated>2012-09-02T02:21:00Z</updated><published>2012-09-02T02:21:00Z</published><id>blog/2012/09/02_test-post-0.html</id><category scheme="/tags/test.html" term="test" label="test"/><category scheme="/tags/lisp.html" term="lisp" label="lisp"/><content type="html">&lt;p&gt;
-This is the first test post.
+  <entry><title type="html">Style Guidelines Revisited</title><author><name>nil</name></author><link href="http://blog.example.com/blog/2012/09/10_style-guidelines-revisited.html"/><updated>2012-09-10T03:25:00Z</updated><published>2012-09-10T03:25:00Z</published><id>blog/2012/09/10_style-guidelines-revisited.html</id><category scheme="/tags/style.html" term="style" label="style"/><content type="html">&lt;p&gt;
+  Coding style guidelines are great.
+  They keep code looking consistent and can improve readability.
+  As a result, many quality, widely-accepted coding styles exist
+  &amp;ndash; K&amp;amp;R, GNU, Whitesmith are a few examples &amp;ndash; and are already
+  loaded into IDE's such as Emacs or NetBeans. 
+  This brings the question: Why do certain universities insist
+  on creating their own style guidelines?
+&lt;/p&gt;
+&lt;p&gt;
+  I was recently reading through the "programming ground rules" of a course
+  at a certain university, which will remain unnamed.
+  For context, this course uses C++ as the main language for the course.
+  While many guidelines were good ideas and common sense,
+  I came across some interesting rules.
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;"Use the // comment style. . Only use the &lt;i&gt;* *&lt;/i&gt; comment style to 
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;  temporarily comment out chunks of your program for testing and debugging. " 
+    I must admit I was a litte confused by this one.
+    Comments compile out.
+    Additionally, all the editors I know of 
+    are able to deal with both commenting styles.
+    I just can't see how this affects readability.
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;i&gt;Every&lt;/i&gt; function needs a doc banner.
+    Even getters, setters, and the following function.
+
+
+
+&lt;pre class="src src-cpp"&gt;&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;class&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;Stack&lt;/span&gt;
+{
+&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;public&lt;/span&gt;:
+   &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;-----------------------------------&lt;/span&gt;
+   &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Returns true if the stack is empty.&lt;/span&gt;
+   &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;-----------------------------------&lt;/span&gt;
+   &lt;span style="color: #8cd0d3;"&gt;bool&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;isEmpty&lt;/span&gt;() { &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;return&lt;/span&gt; top == 0;}
+   &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;...&lt;/span&gt;
+};
+&lt;/pre&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+&lt;p&gt;
+  Thankfully, a few rules from previous courses were noticably absent.
+  Arguments no longer must be labelled in a 
+  comment block as "in, out, or in/out".
+  Do I have a problem with such labels?
+  No, but when they are unneccesary they tend to &lt;b&gt;reduce&lt;/b&gt; the readability
+  of the comments. 
+  Take the following two functions for example.
+  Yes, the function is just a getter, but how much of your C++ code consists
+  of such functions?
 &lt;/p&gt;
 
-</content></entry>
+
+
+&lt;pre class="src src-cpp"&gt;&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;isOutOfBounds( int x, int y)&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Returns true if the coordinates are in bounds.&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Returns false otherwise.&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;ARGS: IN, IN&lt;/span&gt;
+&lt;span style="color: #8cd0d3;"&gt;bool&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;isOutOfBounds&lt;/span&gt;( &lt;span style="color: #8cd0d3;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;x&lt;/span&gt;, &lt;span style="color: #8cd0d3;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;y&lt;/span&gt; );
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+  or
+&lt;/p&gt;
+
+
+
+&lt;pre class="src src-cpp"&gt;&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Checks to see if the given coordinates &lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;are in bounds of the window.&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Note that x and y are expressed in screen coordinates,&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;that is, origin at the top left corner, &lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;with the first quadrant being on screen.&lt;/span&gt;
+&lt;span style="color: #8cd0d3;"&gt;bool&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;isOutOfBounds&lt;/span&gt;( &lt;span style="color: #8cd0d3;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;x&lt;/span&gt;, &lt;span style="color: #8cd0d3;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;y&lt;/span&gt; );
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+  The second declaration, though not rigidly formatted, provides far more
+  information than the first.
+&lt;/p&gt;
+&lt;p&gt;
+  Also gone form the rules is the "30-line function limit", where points
+  would be taken off for any function longer than 30 lines.
+  While written to encourage modular design, the rule also encourages
+  "code golf", where esoteric programming constructs and obscure evalutation
+  rules help to fit the function inside of the line limit.
+&lt;/p&gt;
+&lt;p&gt;
+  Take the following code snippets. Do they do the same thing?
+&lt;/p&gt;
+
+
+
+&lt;pre class="src src-cpp"&gt;&lt;span style="color: #8cd0d3;"&gt;void&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;push&lt;/span&gt;( &lt;span style="color: #8cd0d3;"&gt;float&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;obj_to_push&lt;/span&gt; )
+{
+   stack_data[current_index++] = obj_to_push;
+}
+
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;or&lt;/span&gt;
+
+&lt;span style="color: #8cd0d3;"&gt;void&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;push&lt;/span&gt;( &lt;span style="color: #8cd0d3;"&gt;float&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;obj_to_push&lt;/span&gt; )
+{
+   current_index++;
+   stack_data[current_index] = obj_to_push;
+}
+
+&lt;/pre&gt;
+
+
+&lt;p&gt;  
+  They do not do the same thing.
+  The postfix increment operator is evaluated &lt;i&gt;after&lt;/i&gt; the assignment operator.
+  Encouraging code golf with line limits encourages language constructs that,
+  while clever and loved by language lawyers, 
+  is a pitfall for the creation of bugs.
+&lt;/p&gt;
+&lt;p&gt;
+  Why then are programs graded according to criteria that at times are
+  only tangentially related to good programming and at other times are
+  actually opposed to proper coding?
+  It would seem that the university system feels a need to conform
+  programming into the standardized testing/grading paradigm currently
+  embraced by many educational instutions, but has failed to quantify
+  good programming practices.
+&lt;/p&gt;
+&lt;p&gt;
+  How then, do we teach proper coding to students still struggling
+  to master even the simplest aspects of programming such as language syntax?
+  To be honest, I do not have an answer, and would be dishonest if I
+  purported to be qualified to recommend proper pedagocical procedures.
+  One thing I have noticed, however, is the inordinate about of time spent
+  learning language-specific constructs ( where the semi-colon goes )
+  in courses that advertise themselves
+  as being about things such as "data structures".
+  Perhaps the way to go is to use a language with little syntax such as
+  Scheme.
+  Hal Abelson and Gerald Jay Sussman employed such a method in their
+  book &lt;a href="http://mitpress.mit.edu/sicp/"&gt;Structure and Interpretation of Computer Programs&lt;/a&gt; and their MIT course
+  by the same name ( video lectures can be found &lt;a href="http://archive.org/details/mit_ocw_sicp"&gt;here&lt;/a&gt;.
+  Roughly one lectured covering the syntax of Scheme, rather than half of 
+  a semester using, say, Java ( as an aside, I would have to posit that
+  Java's object referance system cannot be properly understood without
+  first understanding the idea of pointers in a language such as C).
+&lt;/p&gt;</content></entry>
 </feed>
