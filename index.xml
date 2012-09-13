@@ -11,28 +11,30 @@
   As a result, many quality, widely-accepted coding styles exist
   &amp;ndash; K&amp;amp;R, GNU, Whitesmith are a few examples &amp;ndash; and are already
   loaded into IDE's such as Emacs or NetBeans. 
-  This brings the question: Why do certain universities insist
+  This makes me wonder: Why do certain universities insist
   on creating their own style guidelines?
 &lt;/p&gt;
 &lt;p&gt;
   I was recently reading through the "programming ground rules" of a course
   at a certain university, which will remain unnamed.
   For context, this course uses C++ as the main language for the course.
-  While many guidelines were good ideas and common sense,
+  While many of the guidelines are good ideas and common sense,
   I came across some interesting rules.
 &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;"Use the // comment style. . Only use the &lt;i&gt;* *&lt;/i&gt; comment style to 
+&lt;li&gt;"Use the // comment style."
 &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;  temporarily comment out chunks of your program for testing and debugging. " 
-    I must admit I was a litte confused by this one.
+&lt;p&gt;  "Only use the &lt;code&gt;/* */&lt;/code&gt; comment style to
+  temporarily comment out chunks of your program for testing and debugging." 
+    I must admit I was a little confused by this one.
     Comments compile out.
     Additionally, all the editors I know of 
     are able to deal with both commenting styles.
     I just can't see how this affects readability.
 &lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;i&gt;Every&lt;/i&gt; function needs a doc banner.
     Even getters, setters, and the following function.
@@ -45,7 +47,7 @@
    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;-----------------------------------&lt;/span&gt;
    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Returns true if the stack is empty.&lt;/span&gt;
    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;-----------------------------------&lt;/span&gt;
-   &lt;span style="color: #8cd0d3;"&gt;bool&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;isEmpty&lt;/span&gt;() { &lt;span style="color: #f0dfaf; font-weight: bold;"&gt;return&lt;/span&gt; top == 0;}
+   &lt;span style="color: #8cd0d3;"&gt;bool&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;isEmpty&lt;/span&gt;() { &lt;span style="color: #7f9f7f;"&gt;/* &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;. . . */&lt;/span&gt; }
    &lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;...&lt;/span&gt;
 };
 &lt;/pre&gt;
@@ -56,14 +58,14 @@
 
 
 &lt;p&gt;
-  Thankfully, a few rules from previous courses were noticably absent.
-  Arguments no longer must be labelled in a 
+  Thankfully, a few rules from previous courses were noticeably absent.
+  Arguments no longer must be labeled in a 
   comment block as "in, out, or in/out".
   Do I have a problem with such labels?
-  No, but when they are unneccesary they tend to &lt;b&gt;reduce&lt;/b&gt; the readability
+  No, but when they are unnecessary they tend to &lt;i&gt;reduce&lt;/i&gt; the readability
   of the comments. 
   Take the following two functions for example.
-  Yes, the function is just a getter, but how much of your C++ code consists
+  Yes, the function is deliberately simplified, but how much of your C++ code consists
   of such functions?
 &lt;/p&gt;
 
@@ -95,12 +97,13 @@
 &lt;p&gt;
   The second declaration, though not rigidly formatted, provides far more
   information than the first.
+  Also note this use of upper-case to convey that 1960's COBOL kind of feeling.
 &lt;/p&gt;
 &lt;p&gt;
   Also gone form the rules is the "30-line function limit", where points
   would be taken off for any function longer than 30 lines.
   While written to encourage modular design, the rule also encourages
-  "code golf", where esoteric programming constructs and obscure evalutation
+  "code golf", where esoteric programming constructs and obscure evaluation
   rules help to fit the function inside of the line limit.
 &lt;/p&gt;
 &lt;p&gt;
@@ -127,10 +130,10 @@
 
 &lt;p&gt;  
   They do not do the same thing.
-  The postfix increment operator is evaluated &lt;i&gt;after&lt;/i&gt; the assignment operator.
+  The post-fix increment operator is evaluated &lt;i&gt;after&lt;/i&gt; the assignment operator.
   Encouraging code golf with line limits encourages language constructs that,
   while clever and loved by language lawyers, 
-  is a pitfall for the creation of bugs.
+  are a pitfall for the creation of bugs.
 &lt;/p&gt;
 &lt;p&gt;
   Why then are programs graded according to criteria that at times are
@@ -138,26 +141,28 @@
   actually opposed to proper coding?
   It would seem that the university system feels a need to conform
   programming into the standardized testing/grading paradigm currently
-  embraced by many educational instutions, but has failed to quantify
+  embraced by many educational institutions, but has failed to quantify
   good programming practices.
 &lt;/p&gt;
 &lt;p&gt;
   How then, do we teach proper coding to students still struggling
   to master even the simplest aspects of programming such as language syntax?
-  To be honest, I do not have an answer, and would be dishonest if I
-  purported to be qualified to recommend proper pedagocical procedures.
+  To be honest, I do not have an answer, and it would be preposterous if I
+  purported to be qualified to propose proper pedagogical procedures.
   One thing I have noticed, however, is the inordinate about of time spent
   learning language-specific constructs ( where the semi-colon goes )
   in courses that advertise themselves
   as being about things such as "data structures".
+&lt;/p&gt;
+&lt;p&gt;
   Perhaps the way to go is to use a language with little syntax such as
   Scheme.
   Hal Abelson and Gerald Jay Sussman employed such a method in their
   book &lt;a href="http://mitpress.mit.edu/sicp/"&gt;Structure and Interpretation of Computer Programs&lt;/a&gt; and their MIT course
-  by the same name ( video lectures can be found &lt;a href="http://archive.org/details/mit_ocw_sicp"&gt;here&lt;/a&gt;.
-  Roughly one lectured covering the syntax of Scheme, rather than half of 
+  by the same name ( video lectures can be found &lt;a href="http://archive.org/details/mit_ocw_sicp"&gt;here&lt;/a&gt;).
+  Roughly one lecture covered the syntax of Scheme, rather than half of 
   a semester using, say, Java ( as an aside, I would have to posit that
-  Java's object referance system cannot be properly understood without
+  Java's object reference system cannot be properly understood without
   first understanding the idea of pointers in a language such as C).
 &lt;/p&gt;</content></entry>
 </feed>
