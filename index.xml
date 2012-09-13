@@ -100,7 +100,7 @@
   Also note this use of upper-case to convey that 1960's COBOL kind of feeling.
 &lt;/p&gt;
 &lt;p&gt;
-  Also gone form the rules is the "30-line function limit", where points
+  Also gone from the rules is the "30-line function limit", where points
   would be taken off for any function longer than 30 lines.
   While written to encourage modular design, the rule also encourages
   "code golf", where esoteric programming constructs and obscure evaluation
