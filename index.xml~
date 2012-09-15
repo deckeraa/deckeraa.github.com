@@ -1,11 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Lorem ipsum</title>
-  <link href="http://blog.example.comindex.xml" rel="self" />
-  <link href="http://blog.example.com"/>
+  <title>I/Octopus</title>
+  <link href="http://deckeraa.github.comindex.xml" rel="self" />
+  <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
-  <id>http://blog.example.comindex.xml</id>
-  <entry><title type="html">Style Guidelines Revisited</title><author><name>nil</name></author><link href="http://blog.example.com/blog/2012/09/10_style-guidelines-revisited.html"/><updated>2012-09-10T03:25:00Z</updated><published>2012-09-10T03:25:00Z</published><id>blog/2012/09/10_style-guidelines-revisited.html</id><category scheme="/tags/style.html" term="style" label="style"/><content type="html">&lt;p&gt;
+  <id>http://deckeraa.github.comindex.xml</id>
+  <entry><title type="html">State Squid and I/Octopus</title><author><name>nil</name></author><link href="http://deckeraa.github.com/blog/2012/09/13_state-squid-and-ioctopus.html"/><updated>2012-09-13T15:23:00Z</updated><published>2012-09-13T15:23:00Z</published><id>blog/2012/09/13_state-squid-and-ioctopus.html</id><content type="html">&lt;p class="verse"&gt;
+Once upon a time, in a land so fine,&lt;br/&gt;
+where analysis happened all the time,&lt;br/&gt;
+lived a happy little class family.&lt;br/&gt;
+Yes, it was in the land of OO, where lines&lt;br/&gt;
+and boxes and use case scenarios&lt;br/&gt;
+frolic playfully in the street and all&lt;br/&gt;
+the happy classes live together with&lt;br/&gt;
+minimal coupling and high cohesion.&lt;br/&gt;
+&lt;br/&gt;
+Twas dusk one night at the coding class house,&lt;br/&gt;
+where lived a family whose existence was due&lt;br/&gt;
+to an assignment from a programming class.&lt;br/&gt;
+Twas the RPN family of who&lt;br/&gt;
+members were Susie Stack, sibling Quentin Queue,&lt;br/&gt;
+RPNEval and Driver Class too.&lt;br/&gt;
+Daddy Driver Class tucked them into bed&lt;br/&gt;
+along with the state from their objects, he said.&lt;br/&gt;
+Scary stories of high coupling he read,&lt;br/&gt;
+but he assured them that all those bugs were long dead.&lt;br/&gt;
+&lt;br/&gt;
+Those bugs were before we had UML,&lt;br/&gt;
+now we have OO and life is just swell.&lt;br/&gt;
+With those words he bid them all a good night,&lt;br/&gt;
+he bid them sweet dreams and turned off the light.&lt;br/&gt;
+He thought to himself, as he went to his room,&lt;br/&gt;
+Their state is encapsulated, all that&lt;br/&gt;
+talk from functional programmers, of doom&lt;br/&gt;
+and despair from state was lame and old hat.&lt;br/&gt;
+He had it all taken care of, put in each class,&lt;br/&gt;
+the lambda and OO schools had reached an impasse.&lt;br/&gt;
+&lt;br/&gt;
+But all through the night he had quite a fright,&lt;br/&gt;
+unspeakable horrors passing through his mind's sight.&lt;br/&gt;
+He dreamt of a kraken, no, just a huge squid,&lt;br/&gt;
+that just stood and stared as he wondered what it did.&lt;br/&gt;
+It's cavernous eyes peered deep into his soul,&lt;br/&gt;
+This must be a prank, just a functional troll.&lt;br/&gt;
+But there its singular figure remained,&lt;br/&gt;
+on the UML of his soul it was firmly engrained.&lt;br/&gt;
+Its tentacles were just lines, his face a mere shape,&lt;br/&gt;
+But the diagram of his family it threatened to reshape.&lt;br/&gt;
+&lt;br/&gt;
+Rebellion against father, but just in his dream,&lt;br/&gt;
+for RPNEval was drinking from the forbidden stream.&lt;br/&gt;
+That ethereal stream that is called I/O,&lt;br/&gt;
+whose state at runtime, nobody knows.&lt;br/&gt;
+The paternal class cursed in frustration, no fear he could quell,&lt;br/&gt;
+he thought he had had it all planned out so well.&lt;br/&gt;
+But his model was naive, much too simple to be good,&lt;br/&gt;
+he hadn't modeled the state of the &lt;i&gt;whole&lt;/i&gt; program like he should.&lt;br/&gt;
+But now complexity, and inter-dependency too,&lt;br/&gt;
+clamored around his program, like the monkeys at a zoo.&lt;br/&gt;
+&lt;br/&gt;
+Now there is a moral to this story, something just for you,&lt;br/&gt;
+model &lt;i&gt;all&lt;/i&gt; the state in your program, or this too you will rue.&lt;br/&gt;
+&lt;/p&gt;
+
+
+
+
+</content></entry><entry><title type="html">Style Guidelines Revisited</title><author><name>nil</name></author><link href="http://deckeraa.github.com/blog/2012/09/10_style-guidelines-revisited.html"/><updated>2012-09-10T03:25:00Z</updated><published>2012-09-10T03:25:00Z</published><id>blog/2012/09/10_style-guidelines-revisited.html</id><category scheme="/tags/style.html" term="style" label="style"/><content type="html">&lt;p&gt;
   Coding style guidelines are great.
   They keep code looking consistent and can improve readability.
   As a result, many quality, widely-accepted coding styles exist
@@ -100,7 +161,7 @@
   Also note this use of upper-case to convey that 1960's COBOL kind of feeling.
 &lt;/p&gt;
 &lt;p&gt;
-  Also gone form the rules is the "30-line function limit", where points
+  Also gone from the rules is the "30-line function limit", where points
   would be taken off for any function longer than 30 lines.
   While written to encourage modular design, the rule also encourages
   "code golf", where esoteric programming constructs and obscure evaluation
@@ -164,5 +225,6 @@
   a semester using, say, Java ( as an aside, I would have to posit that
   Java's object reference system cannot be properly understood without
   first understanding the idea of pointers in a language such as C).
-&lt;/p&gt;</content></entry>
+&lt;/p&gt;
+</content></entry>
 </feed>
