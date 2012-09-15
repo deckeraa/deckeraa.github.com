@@ -5,7 +5,7 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">State Squid and I/Octopus</title><author><name>nil</name></author><link href="http://deckeraa.github.com/blog/2012/09/13_state-squid-and-ioctopus.html"/><updated>2012-09-13T15:23:00Z</updated><published>2012-09-13T15:23:00Z</published><id>blog/2012/09/13_state-squid-and-ioctopus.html</id><content type="html">&lt;p class="verse"&gt;
+  <entry><title type="html">State Squid and I/Octopus</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/09/13_state-squid-and-ioctopus.html"/><updated>2012-09-13T15:23:00Z</updated><published>2012-09-13T15:23:00Z</published><id>ioctopus/2012/09/13_state-squid-and-ioctopus.html</id><category scheme="/tags/functional-programming.html" term="Functional Programming" label="Functional Programming"/><category scheme="/tags/uml.html" term="UML" label="UML"/><category scheme="/tags/state.html" term="State" label="State"/><content type="html">&lt;p class="verse"&gt;
 Once upon a time, in a land so fine,&lt;br/&gt;
 where analysis happened all the time,&lt;br/&gt;
 lived a happy little class family.&lt;br/&gt;
@@ -66,7 +66,7 @@ model &lt;i&gt;all&lt;/i&gt; the state in your program, or this too you will rue
 
 
 
-</content></entry><entry><title type="html">Style Guidelines Revisited</title><author><name>nil</name></author><link href="http://deckeraa.github.com/blog/2012/09/10_style-guidelines-revisited.html"/><updated>2012-09-10T03:25:00Z</updated><published>2012-09-10T03:25:00Z</published><id>blog/2012/09/10_style-guidelines-revisited.html</id><category scheme="/tags/style.html" term="style" label="style"/><content type="html">&lt;p&gt;
+</content></entry><entry><title type="html">Style Guidelines Revisited</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/09/10_style-guidelines-revisited.html"/><updated>2012-09-10T03:25:00Z</updated><published>2012-09-10T03:25:00Z</published><id>ioctopus/2012/09/10_style-guidelines-revisited.html</id><category scheme="/tags/style.html" term="style" label="style"/><content type="html">&lt;p&gt;
   Coding style guidelines are great.
   They keep code looking consistent and can improve readability.
   As a result, many quality, widely-accepted coding styles exist
@@ -146,11 +146,8 @@ model &lt;i&gt;all&lt;/i&gt; the state in your program, or this too you will rue
 
 
 
-&lt;pre class="src src-cpp"&gt;&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Checks to see if the given coordinates &lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;are in bounds of the window.&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Note that x and y are expressed in screen coordinates,&lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;that is, origin at the top left corner, &lt;/span&gt;
-&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;with the first quadrant being on screen.&lt;/span&gt;
+&lt;pre class="src src-cpp"&gt;&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Checks to see if the given coordinates are in bounds of the window.&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;// &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Note that x and y are expressed in screen coordinates.&lt;/span&gt;
 &lt;span style="color: #8cd0d3;"&gt;bool&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;isOutOfBounds&lt;/span&gt;( &lt;span style="color: #8cd0d3;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;x&lt;/span&gt;, &lt;span style="color: #8cd0d3;"&gt;int&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;y&lt;/span&gt; );
 &lt;/pre&gt;
 
@@ -210,7 +207,7 @@ model &lt;i&gt;all&lt;/i&gt; the state in your program, or this too you will rue
   to master even the simplest aspects of programming such as language syntax?
   To be honest, I do not have an answer, and it would be preposterous if I
   purported to be qualified to propose proper pedagogical procedures.
-  One thing I have noticed, however, is the inordinate about of time spent
+  One thing I have noticed, however, is the inordinate amount of time spent
   learning language-specific constructs ( where the semi-colon goes )
   in courses that advertise themselves
   as being about things such as "data structures".
