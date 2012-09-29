@@ -5,7 +5,11 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">State Squid and I/Octopus</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/09/13_state-squid-and-ioctopus.html"/><updated>2012-09-13T15:23:00Z</updated><published>2012-09-13T15:23:00Z</published><id>ioctopus/2012/09/13_state-squid-and-ioctopus.html</id><category scheme="/tags/functional-programming.html" term="Functional Programming" label="Functional Programming"/><category scheme="/tags/uml.html" term="UML" label="UML"/><category scheme="/tags/state.html" term="State" label="State"/><content type="html">&lt;p class="verse"&gt;
+  <entry><title type="html">State Squid and I/Octopus</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/09/13_state-squid-and-ioctopus.html"/><updated>2012-09-13T15:23:00Z</updated><published>2012-09-13T15:23:00Z</published><id>ioctopus/2012/09/13_state-squid-and-ioctopus.html</id><category scheme="/tags/functional-programming.html" term="Functional Programming" label="Functional Programming"/><category scheme="/tags/uml.html" term="UML" label="UML"/><category scheme="/tags/state.html" term="State" label="State"/><content type="html">&lt;p&gt;
+   &lt;img src="./images/state-squid-uml.png"  alt="./images/state-squid-uml.png" /&gt;
+&lt;/p&gt;
+
+&lt;p class="verse"&gt;
 Once upon a time, in a land so fine,&lt;br/&gt;
 where analysis happened all the time,&lt;br/&gt;
 lived a happy little class family.&lt;br/&gt;
