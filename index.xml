@@ -5,7 +5,24 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">State Squid and I/Octopus</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/09/13_state-squid-and-ioctopus.html"/><updated>2012-09-13T15:23:00Z</updated><published>2012-09-13T15:23:00Z</published><id>ioctopus/2012/09/13_state-squid-and-ioctopus.html</id><category scheme="/tags/functional-programming.html" term="Functional Programming" label="Functional Programming"/><category scheme="/tags/uml.html" term="UML" label="UML"/><category scheme="/tags/state.html" term="State" label="State"/><content type="html">&lt;p&gt;
+  <entry><title type="html">Math Homework Template using Org-mode/LaTeX</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html"/><updated>2012-12-19T16:46:00Z</updated><published>2012-12-19T16:46:00Z</published><id>ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html</id><category scheme="/tags/org-mode.html" term="Org Mode" label="Org Mode"/><category scheme="/tags/homework.html" term="Homework" label="Homework"/><category scheme="/tags/math.html" term="Math" label="Math"/><content type="html">&lt;p&gt;
+This past semester for my Discrete Math class I decided to type up most of my assignments.
+I needed an easy way to format the page and organize problems, so I used &lt;a href="http://orgmode.org/"&gt;Org-mode&lt;/a&gt;, which comes built-in with Emacs.
+Then I also added a few lines to each file to get the page layout to work well with what I was trying to do.
+I've decided to post an org file with some representative problems so that others can employ the same sort of set-up.
+&lt;/p&gt;
+&lt;p&gt;
+To use this template, simply open the org file in Emacs. It should then start org-mode automatically.
+To export to a pdf, type C-c C-e to open the export buffer. Then type 'd' to export to pdf via LaTeX.
+Emacs will probably then ask if you want to allow BIND values; type 'yes' once and it won't ask again.
+&lt;/p&gt;
+
+
+&lt;a href="./hw_sample_template.org"&gt;org file&lt;/a&gt;
+
+&lt;p&gt;
+&lt;a href="./hw_sample_template.pdf"&gt;pdf output&lt;/a&gt;
+&lt;/p&gt;</content></entry><entry><title type="html">State Squid and I/Octopus</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/09/13_state-squid-and-ioctopus.html"/><updated>2012-09-13T15:23:00Z</updated><published>2012-09-13T15:23:00Z</published><id>ioctopus/2012/09/13_state-squid-and-ioctopus.html</id><category scheme="/tags/functional-programming.html" term="Functional Programming" label="Functional Programming"/><category scheme="/tags/uml.html" term="UML" label="UML"/><category scheme="/tags/state.html" term="State" label="State"/><content type="html">&lt;p&gt;
    &lt;img src="./images/state-squid-uml.png"  alt="./images/state-squid-uml.png" /&gt;
 &lt;/p&gt;
 
