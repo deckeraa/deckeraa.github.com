@@ -5,7 +5,93 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">Math Homework Template using Org-mode/LaTeX</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html"/><updated>2012-12-19T16:46:00Z</updated><published>2012-12-19T16:46:00Z</published><id>ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html</id><category scheme="/tags/org-mode.html" term="Org Mode" label="Org Mode"/><category scheme="/tags/homework.html" term="Homework" label="Homework"/><category scheme="/tags/math.html" term="Math" label="Math"/><content type="html">&lt;p&gt;
+  <entry><title type="html">Getting SLIME working on Gentoo</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/21_getting-slime-working-on-gentoo.html"/><updated>2012-12-21T20:54:00Z</updated><published>2012-12-21T20:54:00Z</published><id>ioctopus/2012/12/21_getting-slime-working-on-gentoo.html</id><category scheme="/tags/slime.html" term="SLIME" label="SLIME"/><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/emacs.html" term="Emacs" label="Emacs"/><category scheme="/tags/repl.html" term="REPL" label="REPL"/><category scheme="/tags/gentoo.html" term="Gentoo" label="Gentoo"/><content type="html">&lt;p&gt;
+  I wanted to get &lt;a href="http://common-lisp.net/project/slime/"&gt;SLIME&lt;/a&gt; working so that I could efficiently code lisp, which is my next learning endeavour.
+  This turned out to be much more difficult than I imagined.
+  I've decided to document the steps I took to connect SLIME to a running SBCL (my lisp implementation) on Gentoo.
+  Although outdated, the video on &lt;a href="http://www.common-lisp.net/project/slime/"&gt;this&lt;/a&gt; page (&lt;a href="http://common-lisp.net/project/movies/movies/slime.mov"&gt;direct link&lt;/a&gt;) is a good overview of SLIME.
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Emerge &lt;a href="http://www.cliki.net/sbcl"&gt;SBCL&lt;/a&gt;
+
+
+
+&lt;pre class="src src-sh"&gt;sudo emerge -av sbcl
+&lt;/pre&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;Check out the fairly-stable version of SLIME
+    I put all the software I build from source by myself in ~/src, but you could put it anywhere.
+
+
+
+&lt;pre class="src src-sh"&gt;&lt;span style="color: #8cd0d3;"&gt;cd&lt;/span&gt; ./src
+cvs -d :pserver:anonymous@common-lisp.net:/project/slime/cvsroot checkout -r FAIRLY-STABLE slime
+&lt;/pre&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;Create a "systems" folder for SBCL to find SLIME's &lt;code&gt;swank.asd&lt;/code&gt; file in.
+
+
+
+&lt;pre class="src src-sh"&gt;&lt;span style="color: #8cd0d3;"&gt;cd&lt;/span&gt; ./lisp
+mkdir systems
+&lt;span style="color: #8cd0d3;"&gt;cd&lt;/span&gt; ./systems
+ln -s ~/src/slime/swank.asd
+&lt;/pre&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;Add the following to ~/.sbclrc (create the file if it doesn't exist).
+
+
+
+&lt;pre class="src src-sh"&gt;(require :asdf)
+(push &lt;span style="color: #cc9393;"&gt;"/home/[user]/lisp/systems/"&lt;/span&gt; asdf:*central-registry*)
+&lt;/pre&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;Add the following to ~/.emacs
+
+
+
+&lt;pre class="src src-lisp"&gt;(setq inferior-lisp-program &lt;span style="color: #cc9393;"&gt;"/usr/bin/sbcl"&lt;/span&gt; &lt;span style="color: #7f9f7f;"&gt;; &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;your Lisp system&lt;/span&gt;
+    slime-startup-animation t) 
+(add-to-list 'load-path &lt;span style="color: #cc9393;"&gt;"~/src/slime"&lt;/span&gt;) &lt;span style="color: #7f9f7f;"&gt;; &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;your SLIME directory&lt;/span&gt;
+(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;require&lt;/span&gt; '&lt;span style="color: #bfebbf;"&gt;slime&lt;/span&gt;)
+(slime-setup '(slime-fancy slime-asdf))
+&lt;/pre&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;Start up SBCL, and run the following:
+
+
+
+&lt;pre class="src src-lisp"&gt;(asdf:oos 'asdf:load-op &lt;span style="color: #8cd0d3;"&gt;:swank&lt;/span&gt;)
+(swank:create-server)
+&lt;/pre&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;Now running 'M-x slime-connect' in Emacs should start a REPL that looks something like
+
+
+
+&lt;pre class="src src-lisp"&gt;&lt;span style="color: #7f9f7f;"&gt;; &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;SLIME 2011-11-03&lt;/span&gt;
+CL-USER&amp;gt; 
+&lt;/pre&gt;
+
+&lt;p&gt;
+    Expect to be prompted for host name and port; accept the defaults.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+</content></entry><entry><title type="html">Math Homework Template using Org-mode/LaTeX</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html"/><updated>2012-12-19T16:46:00Z</updated><published>2012-12-19T16:46:00Z</published><id>ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html</id><category scheme="/tags/org-mode.html" term="Org Mode" label="Org Mode"/><category scheme="/tags/homework.html" term="Homework" label="Homework"/><category scheme="/tags/math.html" term="Math" label="Math"/><content type="html">&lt;p&gt;
 This past semester for my Discrete Math class I decided to type up most of my assignments.
 I needed an easy way to format the page and organize problems, so I used &lt;a href="http://orgmode.org/"&gt;Org-mode&lt;/a&gt;, which comes built-in with Emacs.
 Then I also added a few lines to each file to get the page layout to work well with what I was trying to do.

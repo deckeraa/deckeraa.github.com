@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Math Homework Template using Org-mode/LaTeX</title>
+    <title>Getting SLIME working on Gentoo</title>
     <link rel="stylesheet" type="text/css" href="../../../style/less/o-blog.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version 1.2-111-gfab6256"/>
@@ -21,7 +21,7 @@
 <ul class="breadcrumbs">
 	  <ul class="breadcrumb">
   <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
-  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/12/index.html">12</a> <span class="divider">/</span></li><li>Math Homework Template using Org-mode/LaTeX</li>
+  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/12/index.html">12</a> <span class="divider">/</span></li><li>Getting SLIME working on Gentoo</li>
   </ul>
 
 </ul>
@@ -34,7 +34,7 @@
     <div class="well">
       <div class="row">
 	<div class="date span1">
-	  <div class=" date-d">19</div>
+	  <div class=" date-d">21</div>
 	  <div class=" date-m"><a href="../../../ioctopus/2012/12/index.html">Dec</a></div>
 	  <div class=" date-y"><a href="../../../ioctopus/2012/index.html">2012</a>
 	  </div>
@@ -42,11 +42,11 @@
 	<div class="span1">
 
 	</div>
-	<h1 class="offset2" style="font-size: 250%">Math Homework Template using Org-mode/LaTeX</h1>
+	<h1 class="offset2" style="font-size: 250%">Getting SLIME working on Gentoo</h1>
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../ioctopus/2012/09/13_state-squid-and-ioctopus.html"><i class="icon-chevron-left"></i>&nbsp;State Squid and I/Octopus</a></li><li class="next" style="text-align: right;"><a href="../../../ioctopus/2012/12/21_getting-slime-working-on-gentoo.html">Getting SLIME working on Gentoo&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html"><i class="icon-chevron-left"></i>&nbsp;Math Homework Template using Org-mode/LaTeX</a></li><li class="next">&nbsp;</li>
 	</ul>
       </nav>
     </div>
@@ -54,31 +54,100 @@
   </header>
   <div class="article-content">
     <p>
-This past semester for my Discrete Math class I decided to type up most of my assignments.
-I needed an easy way to format the page and organize problems, so I used <a href="http://orgmode.org/">Org-mode</a>, which comes built-in with Emacs.
-Then I also added a few lines to each file to get the page layout to work well with what I was trying to do.
-I've decided to post an org file with some representative problems so that others can employ the same sort of set-up.
+  I wanted to get <a href="http://common-lisp.net/project/slime/">SLIME</a> working so that I could efficiently code lisp, which is my next learning endeavour.
+  This turned out to be much more difficult than I imagined.
+  I've decided to document the steps I took to connect SLIME to a running SBCL (my lisp implementation) on Gentoo.
+  Although outdated, the video on <a href="http://www.common-lisp.net/project/slime/">this</a> page (<a href="http://common-lisp.net/project/movies/movies/slime.mov">direct link</a>) is a good overview of SLIME.
 </p>
+<ul>
+<li>Emerge <a href="http://www.cliki.net/sbcl">SBCL</a>
+
+
+
+<pre class="src src-sh">sudo emerge -av sbcl
+</pre>
+
+
+</li>
+<li>Check out the fairly-stable version of SLIME
+    I put all the software I build from source by myself in ~/src, but you could put it anywhere.
+
+
+
+<pre class="src src-sh"><span style="color: #8cd0d3;">cd</span> ./src
+cvs -d :pserver:anonymous@common-lisp.net:/project/slime/cvsroot checkout -r FAIRLY-STABLE slime
+</pre>
+
+
+</li>
+<li>Create a "systems" folder for SBCL to find SLIME's <code>swank.asd</code> file in.
+
+
+
+<pre class="src src-sh"><span style="color: #8cd0d3;">cd</span> ./lisp
+mkdir systems
+<span style="color: #8cd0d3;">cd</span> ./systems
+ln -s ~/src/slime/swank.asd
+</pre>
+
+
+</li>
+<li>Add the following to ~/.sbclrc (create the file if it doesn't exist).
+
+
+
+<pre class="src src-sh">(require :asdf)
+(push <span style="color: #cc9393;">"/home/[user]/lisp/systems/"</span> asdf:*central-registry*)
+</pre>
+
+
+</li>
+<li>Add the following to ~/.emacs
+
+
+
+<pre class="src src-lisp">(setq inferior-lisp-program <span style="color: #cc9393;">"/usr/bin/sbcl"</span> <span style="color: #7f9f7f;">; </span><span style="color: #7f9f7f;">your Lisp system</span>
+    slime-startup-animation t) 
+(add-to-list 'load-path <span style="color: #cc9393;">"~/src/slime"</span>) <span style="color: #7f9f7f;">; </span><span style="color: #7f9f7f;">your SLIME directory</span>
+(<span style="color: #f0dfaf; font-weight: bold;">require</span> '<span style="color: #bfebbf;">slime</span>)
+(slime-setup '(slime-fancy slime-asdf))
+</pre>
+
+
+</li>
+<li>Start up SBCL, and run the following:
+
+
+
+<pre class="src src-lisp">(asdf:oos 'asdf:load-op <span style="color: #8cd0d3;">:swank</span>)
+(swank:create-server)
+</pre>
+
+
+</li>
+<li>Now running 'M-x slime-connect' in Emacs should start a REPL that looks something like
+
+
+
+<pre class="src src-lisp"><span style="color: #7f9f7f;">; </span><span style="color: #7f9f7f;">SLIME 2011-11-03</span>
+CL-USER&gt; 
+</pre>
+
 <p>
-To use this template, simply open the org file in Emacs. It should then start org-mode automatically.
-To export to a pdf, type C-c C-e to open the export buffer. Then type 'd' to export to pdf via LaTeX.
-Emacs will probably then ask if you want to allow BIND values; type 'yes' once and it won't ask again.
-</p>
+    Expect to be prompted for host name and port; accept the defaults.
+</p></li>
+</ul>
 
 
-<a href="./hw_sample_template.org">org file</a>
 
-<p>
-<a href="./hw_sample_template.pdf">pdf output</a>
-</p>
   </div>
   
   <footer class="well article-footer">
-    Posted on <time datetime="2012-12-19T16:46:00Z"> Wednesday December, 19 2012 at 16:46:00 UTC</time>.
+    Posted on <time datetime="2012-12-21T20:54:00Z"> Friday December, 21 2012 at 20:54:00 UTC</time>.
     <nav class="tag-cloud">
       <h1><i class="icon-tags"></i> related tags</h1>
       <ul>
-	<li class="label label-inverse small"><a href="../../../tags/org-mode.html">Org Mode</a></li><li class="label label-inverse small"><a href="../../../tags/homework.html">Homework</a></li><li class="label label-inverse small"><a href="../../../tags/math.html">Math</a></li>
+	<li class="label label-inverse small"><a href="../../../tags/slime.html">SLIME</a></li><li class="label label-inverse small"><a href="../../../tags/lisp.html">Lisp</a></li><li class="label label-inverse small"><a href="../../../tags/emacs.html">Emacs</a></li><li class="label label-inverse small"><a href="../../../tags/repl.html">REPL</a></li><li class="label label-inverse small"><a href="../../../tags/gentoo.html">Gentoo</a></li>
       </ul>
     </nav>
   </footer>
