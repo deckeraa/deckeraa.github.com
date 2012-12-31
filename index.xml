@@ -5,7 +5,206 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">Getting SLIME working on Gentoo</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/21_getting-slime-working-on-gentoo.html"/><updated>2012-12-21T20:54:00Z</updated><published>2012-12-21T20:54:00Z</published><id>ioctopus/2012/12/21_getting-slime-working-on-gentoo.html</id><category scheme="/tags/slime.html" term="SLIME" label="SLIME"/><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/emacs.html" term="Emacs" label="Emacs"/><category scheme="/tags/repl.html" term="REPL" label="REPL"/><category scheme="/tags/gentoo.html" term="Gentoo" label="Gentoo"/><content type="html">&lt;p&gt;
+  <entry><title type="html">Test-First Programming</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/30_test-first-programming.html"/><updated>2012-12-30T04:33:00Z</updated><published>2012-12-30T04:33:00Z</published><id>ioctopus/2012/12/30_test-first-programming.html</id><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/xp.html" term="XP" label="XP"/><category scheme="/tags/unit-tests.html" term="Unit Tests" label="Unit Tests"/><content type="html">&lt;p&gt;
+My most recent coding, an arkanoid clone written in Common Lisp, with a sprite library that I'm creating
+with an eye towards reusability, called for unit testing.
+I know, one should always unit test, but at school I am often forced to use tools e.g. Visual Studio,
+that obfuscate the build process and make it time-consuming to set-up unit tests.
+&lt;/p&gt;
+&lt;p&gt;
+Judging from &lt;a href="https://groups.google.com/forum/?fromgroups=#!topic/comp.lang.lisp/5ieAOvLWSTA"&gt;this comp.lang.lisp thread&lt;/a&gt;,
+many lispers roll their own unit test frameworks.
+In lisp it is fairly trivial (following code taken from the referenced &lt;code&gt;comp.lang.lisp&lt;/code&gt; thread):
+&lt;/p&gt;
+
+
+&lt;pre class="src src-lisp"&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;defun&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;pick-greater&lt;/span&gt; (x y) y)
+(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;defparameter&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;*test-cases*&lt;/span&gt;
+  '((+    (3 5)     8)
+    (car  ((3 5))   3)
+    (cdr  ((3 5))   5)
+    (cons (3 5)     (3 . 5))
+    (/    (6 4)     3/2)
+    (cadr ((3 5 7)) 7)
+    ))
+(remove-if #'(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;lambda&lt;/span&gt; (fn+args+res)
+               (equal (caddr fn+args+res)
+                      (apply (car fn+args+res) (cadr fn+args+res))))
+ *test-cases*)
+&lt;/pre&gt;
+
+&lt;p&gt;
+The last s-expression returns &lt;code&gt;((CDR ((3 5)) 5) (CADR ((3 5 7)) 7))&lt;/code&gt; when evaluated,
+showing which tests failed.
+Honestly, when I saw this, I was pretty impressed.
+A rudimentary, yet functional, testing framework in &lt;b&gt;4 lines&lt;/b&gt; of code.
+Lisp continues to impress me.
+&lt;/p&gt;
+&lt;p&gt;
+Peter Seibel has a &lt;a href="http://www.gigamonkeys.com/book/practical-building-a-unit-test-framework.html"&gt;chapter&lt;/a&gt; in Practical Common Lisp devoted to creating a unit-testing library.
+He demonstrates proper use of macros (the lisp kind, unrelated to the C kind).
+&lt;/p&gt;
+&lt;p&gt;
+I wanted something a bit more feature-full, yet still simple, so I took a look around
+at the available libraries. &lt;a href="https://github.com/OdonataResearchLLC/lisp-unit/wiki"&gt;lisp-unit&lt;/a&gt; fits the bill.
+There is another page I referenced &lt;a href="http://www.cs.northwestern.edu/academics/courses/325/readings/lisp-unit.html#overview"&gt;here&lt;/a&gt;. 
+The big takeaway from that page was the use of &lt;code&gt;(use-package :lisp-unit)&lt;/code&gt;
+at the start. 
+&lt;/p&gt;
+&lt;p&gt;
+The main point of this post has surprisingly, against the best advice from writers of prose, not been introduced yet.
+The &lt;a href="http://www.cs.northwestern.edu/academics/courses/325/readings/lisp-unit.html#overview"&gt;second page&lt;/a&gt; had a link to &lt;a href="http://www.extremeprogramming.org/rules/testfirst.html"&gt;this&lt;/a&gt; "Xtreme" Programming article.
+While I agreed with most of the first portion, especially how writing unit test &lt;i&gt;before&lt;/i&gt; code forces the requirements to be fully specified,
+I disagreed later on, mostly with the last paragraph:
+&lt;/p&gt;
+
+
+
+&lt;pre class="src src-sh"&gt;There is a rhythm to developing software unit test first. 
+You create one test to define some small aspect of the problem at hand. 
+Then you create the simplest code that will make that test pass. 
+Then you create a second test. 
+Now you add to the code you just created to make this new test pass, but no more! 
+Not until you have yet a third test. 
+You continue until there is nothing left to test. 
+The coffee maker problem shows an example written&lt;span style="color: #f0dfaf; font-weight: bold;"&gt; in&lt;/span&gt; Java.
+
+The code you will create is simple and concise, implementing only the features you wanted. 
+Other developers can see how to use this new code by browsing the tests. 
+Input whose results are undefined will be conspicuously absent from the test suite. 
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+So they are basically saying that all my funtions should be discrete, the domain of which consists entirely of points for
+which there are test cases.
+No! This is &lt;b&gt;not&lt;/b&gt; the understanding that other people using your code will have.
+They will assume that your functions will work for all values of the input types specified.
+For example, I would expect, say, a function that determined if a point in a rectangle, to work given any point and any rectangle.
+Or at the very least, any point and any rectangle with a positive (non-zero) area.
+This is orthogonally opposed to the test-spec driven function being promoted in the article.
+&lt;/p&gt;
+&lt;p&gt;
+Oh, but we can go further.
+I can trivially follow the above advice by hard-wiring in output to match the test spec.
+Think of it like a function defined by a set of ordered pairs, (&lt;i&gt;input&lt;/i&gt; &lt;i&gt;output&lt;/i&gt;).
+Hopefully everyone can easily concieve of the folly of this sort of philosophy.
+&lt;/p&gt;
+&lt;p&gt;
+This concludes Rant #269.4, entitled "Test Specs do not constitute a function definition."
+&lt;/p&gt;</content></entry><entry><title type="html">Lisp with SDL Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/22_lisp-with-sdl-notes.html"/><updated>2012-12-22T17:14:00Z</updated><published>2012-12-22T17:14:00Z</published><id>ioctopus/2012/12/22_lisp-with-sdl-notes.html</id><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/sdl.html" term="SDL" label="SDL"/><category scheme="/tags/repl.html" term="REPL" label="REPL"/><content type="html">&lt;div id="outline-container-1" class="outline-3"&gt;
+&lt;h3 id="sec-1"&gt;Installing LispBuilder&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-1"&gt;
+
+&lt;p&gt;Run the following in your lisp interpreter (for me it's SBCL)
+&lt;/p&gt;
+
+
+&lt;pre class="src src-lisp"&gt;(asdf-install:install &lt;span style="color: #8cd0d3;"&gt;:cffi&lt;/span&gt;)
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+That command stops and asks a lot about not reading the GPG key and also needs to re-initialize the central registry for
+every new package. No big deal though, both are offered as restarts.
+&lt;/p&gt;
+&lt;p&gt;
+Next, check-out lispbuilder.
+&lt;/p&gt;
+
+
+&lt;pre class="src src-sh"&gt;svn checkout http://lispbuilder.googlecode.com/svn/trunk/ lispbuilder-read-only
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+Put the following in ~/.sbclrc. You will have to change the paths to match where you checked out lispbuilder to.
+&lt;/p&gt;
+
+
+&lt;pre class="src src-lisp"&gt;(pushnew &lt;span style="color: #cc9393;"&gt;"~/src/lispbuilder-read-only/lispbuilder-sdl/"&lt;/span&gt; asdf:*central-registry* &lt;span style="color: #8cd0d3;"&gt;:test&lt;/span&gt; #'equal)
+(pushnew &lt;span style="color: #cc9393;"&gt;"~/src/lispbuilder-read-only/lispbuilder-sdl-mixer/"&lt;/span&gt; asdf:*central-registry* &lt;span style="color: #8cd0d3;"&gt;:test&lt;/span&gt; #'equal)
+
+(asdf:oos 'asdf:load-op 'lispbuilder-sdl)
+(asdf:oos 'asdf:load-op 'lispbuilder-sdl-examples)
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+Running &lt;code&gt;(lispbuilder-sdl-examples:mandelbrot)&lt;/code&gt; yields a window drawing a mandelbrot, so it must have
+installed.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;a href="https://code.google.com/p/lispbuilder/wiki/UsingLispbuilderSDL"&gt;There is a really good user manual&lt;/a&gt; with examples and line-by-line explanations.
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-2" class="outline-3"&gt;
+&lt;h3 id="sec-2"&gt;Using the REPL&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-2"&gt;
+
+&lt;p&gt;A primary inspiration trying out lisp with emacs/slime is &lt;a href="http://youtu.be/PUv66718DII"&gt;Bret Victor's talk&lt;/a&gt; on interactive programming.
+My distaste for the compile-test-modify cycle grew last semester when I had to compile C++ using Visual Studio &amp;hellip; over a network.
+12-second compile times were the norm. That and a bug in VS 2010 kept auto-complete from working in the Windows forms mode, 
+combined with a stunning lack of quality documentation for the C++ Forms libraries turned the projects into an agonizingly slow
+guess-and-check "development" process.
+Anyhow, back to lisp.
+&lt;/p&gt;
+&lt;p&gt;
+I loaded the following code from the wiki and stated executing it:
+&lt;/p&gt;
+
+
+&lt;pre class="src src-lisp"&gt;(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;defparameter&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;*random-color*&lt;/span&gt; sdl:*blue*)
+(&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;defun&lt;/span&gt; &lt;span style="color: #8cd0d3;"&gt;mouse-rect-2d&lt;/span&gt; ()
+  (&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;sdl:with-init&lt;/span&gt; ()
+    (sdl:window 200 200 &lt;span style="color: #8cd0d3;"&gt;:title-caption&lt;/span&gt; &lt;span style="color: #cc9393;"&gt;"REPL without a cause"&lt;/span&gt;)
+    (setf (sdl:frame-rate) 60)
+
+    (&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;sdl:with-events&lt;/span&gt; ()
+      (&lt;span style="color: #8cd0d3;"&gt;:quit-event&lt;/span&gt; () t)
+      (&lt;span style="color: #8cd0d3;"&gt;:key-down-event&lt;/span&gt; ()
+       (sdl:push-quit-event))
+      (&lt;span style="color: #8cd0d3;"&gt;:idle&lt;/span&gt; ()
+       &lt;span style="color: #7f9f7f;"&gt;;; &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Change the color of the box if the left mouse button is depressed&lt;/span&gt;
+       (&lt;span style="color: #f0dfaf; font-weight: bold;"&gt;when&lt;/span&gt; (sdl:mouse-left-p))
+&lt;span style="color: #7f9f7f;"&gt;;;         &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;(setf *random-color* (sdl:color :r (random 255) :g (random 255) :b (random 255))))&lt;/span&gt;
+
+       &lt;span style="color: #7f9f7f;"&gt;;; &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Clear the display each game loop&lt;/span&gt;
+       (sdl:clear-display sdl:*black*)
+
+       &lt;span style="color: #7f9f7f;"&gt;;; &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Draw the box having a center at the mouse x/y coordinates.&lt;/span&gt;
+       (sdl:draw-box (sdl:rectangle-from-midpoint-* (sdl:mouse-x) (sdl:mouse-y) 20 20)
+                     &lt;span style="color: #8cd0d3;"&gt;:color&lt;/span&gt; *random-color*)
+
+       &lt;span style="color: #7f9f7f;"&gt;;; &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Redraw the display&lt;/span&gt;
+       (sdl:update-display)))))
+&lt;/pre&gt;
+
+
+&lt;p&gt;
+There is a screenshot here &lt;a href="./images/basic_sdl_with_repl.jpg"&gt;&lt;img src="./images/basic\_sdl\_with\_repl.jpg" alt="basic\_sdl\_with\_repl.jpg"/&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Then I changed &lt;code&gt;sdl:*blue*&lt;/code&gt; to &lt;code&gt;sdl:*red*&lt;/code&gt;, pressed C-c C-c, and boom! the color changed. Nice.
+&lt;/p&gt;
+&lt;p&gt;
+Okay, so a global variable can be changed on the fly. Big deal. Any debugger can do that.
+What about redefining a function, recompiling, and executing on the fly?
+To test this out, I wrote the function &lt;code&gt;(defun my_clear () (sdl:clear-display sdl:*red*))&lt;/code&gt;.
+I then replaced &lt;code&gt;(sdl:clear-display sdl:*black*)&lt;/code&gt; with &lt;code&gt;(my_clear)&lt;/code&gt; in the main event loop.
+Then, once I ran it, I could change the color inside of &lt;code&gt;my_clear&lt;/code&gt;, redefine the function with C-c C-c,
+and have the already-running process change accordingly. This is powerful.
+&lt;/p&gt;
+&lt;p&gt;
+There is a tip &lt;a href="https://code.google.com/p/lispbuilder/wiki/PortableInteractiveDevelopment"&gt;here&lt;/a&gt; on the lispbuilder wiki with a tip about keeping the repl available when 
+running a single-threaded lisp/sdl program. 
+I haven't needed this yet.
+&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+</content></entry><entry><title type="html">Getting SLIME working on Gentoo</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/21_getting-slime-working-on-gentoo.html"/><updated>2012-12-21T20:54:00Z</updated><published>2012-12-21T20:54:00Z</published><id>ioctopus/2012/12/21_getting-slime-working-on-gentoo.html</id><category scheme="/tags/slime.html" term="SLIME" label="SLIME"/><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/emacs.html" term="Emacs" label="Emacs"/><category scheme="/tags/repl.html" term="REPL" label="REPL"/><category scheme="/tags/gentoo.html" term="Gentoo" label="Gentoo"/><content type="html">&lt;p&gt;
   I wanted to get &lt;a href="http://common-lisp.net/project/slime/"&gt;SLIME&lt;/a&gt; working so that I could efficiently code lisp, which is my next learning endeavour.
   This turned out to be much more difficult than I imagined.
   I've decided to document the steps I took to connect SLIME to a running SBCL (my lisp implementation) on Gentoo.

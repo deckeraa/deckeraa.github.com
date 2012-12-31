@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Lisp with SDL Notes</title>
+    <link rel="stylesheet" type="text/css" href="../../../style/less/o-blog.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="generator" content="o-blog version 1.2-111-gfab6256"/>
+  </head>
+  <body>
+       
+<ul class="nav nav-pills">
+ <p>
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../index.xml">RSS</a></li>
+</p>
+
+
+</ul>
+
+<ul class="breadcrumbs">
+	  <ul class="breadcrumb">
+  <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
+  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/12/index.html">12</a> <span class="divider">/</span></li><li>Lisp with SDL Notes</li>
+  </ul>
+
+</ul>
+
+
+<div id="page" class="container">
+
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">22</div>
+	  <div class=" date-m"><a href="../../../ioctopus/2012/12/index.html">Dec</a></div>
+	  <div class=" date-y"><a href="../../../ioctopus/2012/index.html">2012</a>
+	  </div>
+	</div>
+	<div class="span1">
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">Lisp with SDL Notes</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../ioctopus/2012/12/21_getting-slime-working-on-gentoo.html"><i class="icon-chevron-left"></i>&nbsp;Getting SLIME working on Gentoo</a></li><li class="next" style="text-align: right;"><a href="../../../ioctopus/2012/12/30_test-first-programming.html">Test-First Programming&nbsp;<i class="icon-chevron-right"></i></a></li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">Installing LispBuilder</h3>
+<div class="outline-text-3" id="text-1">
+
+<p>Run the following in your lisp interpreter (for me it's SBCL)
+</p>
+
+
+<pre class="src src-lisp">(asdf-install:install <span style="color: #8cd0d3;">:cffi</span>)
+</pre>
+
+
+<p>
+That command stops and asks a lot about not reading the GPG key and also needs to re-initialize the central registry for
+every new package. No big deal though, both are offered as restarts.
+</p>
+<p>
+Next, check-out lispbuilder.
+</p>
+
+
+<pre class="src src-sh">svn checkout http://lispbuilder.googlecode.com/svn/trunk/ lispbuilder-read-only
+</pre>
+
+
+<p>
+Put the following in ~/.sbclrc. You will have to change the paths to match where you checked out lispbuilder to.
+</p>
+
+
+<pre class="src src-lisp">(pushnew <span style="color: #cc9393;">"~/src/lispbuilder-read-only/lispbuilder-sdl/"</span> asdf:*central-registry* <span style="color: #8cd0d3;">:test</span> #'equal)
+(pushnew <span style="color: #cc9393;">"~/src/lispbuilder-read-only/lispbuilder-sdl-mixer/"</span> asdf:*central-registry* <span style="color: #8cd0d3;">:test</span> #'equal)
+
+(asdf:oos 'asdf:load-op 'lispbuilder-sdl)
+(asdf:oos 'asdf:load-op 'lispbuilder-sdl-examples)
+</pre>
+
+
+<p>
+Running <code>(lispbuilder-sdl-examples:mandelbrot)</code> yields a window drawing a mandelbrot, so it must have
+installed.
+</p>
+<p>
+<a href="https://code.google.com/p/lispbuilder/wiki/UsingLispbuilderSDL">There is a really good user manual</a> with examples and line-by-line explanations.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">Using the REPL</h3>
+<div class="outline-text-3" id="text-2">
+
+<p>A primary inspiration trying out lisp with emacs/slime is <a href="http://youtu.be/PUv66718DII">Bret Victor's talk</a> on interactive programming.
+My distaste for the compile-test-modify cycle grew last semester when I had to compile C++ using Visual Studio &hellip; over a network.
+12-second compile times were the norm. That and a bug in VS 2010 kept auto-complete from working in the Windows forms mode, 
+combined with a stunning lack of quality documentation for the C++ Forms libraries turned the projects into an agonizingly slow
+guess-and-check "development" process.
+Anyhow, back to lisp.
+</p>
+<p>
+I loaded the following code from the wiki and stated executing it:
+</p>
+
+
+<pre class="src src-lisp">(<span style="color: #f0dfaf; font-weight: bold;">defparameter</span> <span style="color: #dfaf8f;">*random-color*</span> sdl:*blue*)
+(<span style="color: #f0dfaf; font-weight: bold;">defun</span> <span style="color: #8cd0d3;">mouse-rect-2d</span> ()
+  (<span style="color: #f0dfaf; font-weight: bold;">sdl:with-init</span> ()
+    (sdl:window 200 200 <span style="color: #8cd0d3;">:title-caption</span> <span style="color: #cc9393;">"REPL without a cause"</span>)
+    (setf (sdl:frame-rate) 60)
+
+    (<span style="color: #f0dfaf; font-weight: bold;">sdl:with-events</span> ()
+      (<span style="color: #8cd0d3;">:quit-event</span> () t)
+      (<span style="color: #8cd0d3;">:key-down-event</span> ()
+       (sdl:push-quit-event))
+      (<span style="color: #8cd0d3;">:idle</span> ()
+       <span style="color: #7f9f7f;">;; </span><span style="color: #7f9f7f;">Change the color of the box if the left mouse button is depressed</span>
+       (<span style="color: #f0dfaf; font-weight: bold;">when</span> (sdl:mouse-left-p))
+<span style="color: #7f9f7f;">;;         </span><span style="color: #7f9f7f;">(setf *random-color* (sdl:color :r (random 255) :g (random 255) :b (random 255))))</span>
+
+       <span style="color: #7f9f7f;">;; </span><span style="color: #7f9f7f;">Clear the display each game loop</span>
+       (sdl:clear-display sdl:*black*)
+
+       <span style="color: #7f9f7f;">;; </span><span style="color: #7f9f7f;">Draw the box having a center at the mouse x/y coordinates.</span>
+       (sdl:draw-box (sdl:rectangle-from-midpoint-* (sdl:mouse-x) (sdl:mouse-y) 20 20)
+                     <span style="color: #8cd0d3;">:color</span> *random-color*)
+
+       <span style="color: #7f9f7f;">;; </span><span style="color: #7f9f7f;">Redraw the display</span>
+       (sdl:update-display)))))
+</pre>
+
+
+<p>
+There is a screenshot here <a href="./images/basic_sdl_with_repl.jpg"><img src="./images/basic\_sdl\_with\_repl.jpg" alt="basic\_sdl\_with\_repl.jpg"/></a>
+</p>
+<p>
+Then I changed <code>sdl:*blue*</code> to <code>sdl:*red*</code>, pressed C-c C-c, and boom! the color changed. Nice.
+</p>
+<p>
+Okay, so a global variable can be changed on the fly. Big deal. Any debugger can do that.
+What about redefining a function, recompiling, and executing on the fly?
+To test this out, I wrote the function <code>(defun my_clear () (sdl:clear-display sdl:*red*))</code>.
+I then replaced <code>(sdl:clear-display sdl:*black*)</code> with <code>(my_clear)</code> in the main event loop.
+Then, once I ran it, I could change the color inside of <code>my_clear</code>, redefine the function with C-c C-c,
+and have the already-running process change accordingly. This is powerful.
+</p>
+<p>
+There is a tip <a href="https://code.google.com/p/lispbuilder/wiki/PortableInteractiveDevelopment">here</a> on the lispbuilder wiki with a tip about keeping the repl available when 
+running a single-threaded lisp/sdl program. 
+I haven't needed this yet.
+</p></div>
+</div>
+
+  </div>
+  
+  <footer class="well article-footer">
+    Posted on <time datetime="2012-12-22T17:14:00Z"> Saturday December, 22 2012 at 17:14:00 UTC</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> related tags</h1>
+      <ul>
+	<li class="label label-inverse small"><a href="../../../tags/lisp.html">Lisp</a></li><li class="label label-inverse small"><a href="../../../tags/sdl.html">SDL</a></li><li class="label label-inverse small"><a href="../../../tags/repl.html">REPL</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>About</h1>
+	      <p>
+  This is the blog of Aaron Decker,
+  a software engineer and mathematician currently
+  attending the University of Wisconsin at Platteville.
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>Links</h1>
+	      <ul>
+		<ul>
+<li><a href="../../../index.html">Home</a>
+</li>
+</ul>
+
+
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1><a href="../../../archives.html">Archives</a></h1>
+	      <ul>
+		<li><a href="../../../ioctopus/2012/12/30_test-first-programming.html">Test-First Programming</a></li> <li><a href="../../../ioctopus/2012/12/22_lisp-with-sdl-notes.html">Lisp with SDL Notes</a></li> <li><a href="../../../ioctopus/2012/12/21_getting-slime-working-on-gentoo.html">Getting SLIME working on Gentoo</a></li> <li><a href="../../../ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html">Math Homework Template using Org-mode/LaTeX</a></li> <li><a href="../../../ioctopus/2012/09/13_state-squid-and-ioctopus.html">State Squid and I/Octopus</a></li> <li><a href="../../../ioctopus/2012/09/10_style-guidelines-revisited.html">Style Guidelines Revisited</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1><a href="../../../tags/index.html">Tags</a></h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/functional-programming.html">Functional Programming</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/gentoo.html">Gentoo</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/homework.html">Homework</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/lisp.html">Lisp</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/math.html">Math</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/org-mode.html">Org Mode</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/repl.html">REPL</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/sdl.html">SDL</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/slime.html">SLIME</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/state.html">State</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/style.html">Style</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/uml.html">UML</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/unit-tests.html">Unit Tests</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/xp.html">XP</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  <!--	  
+ -->
+	  <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">
+	    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br />
+	  All content, unless otherwise noted, is under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+	  <p>Powered by <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	  <p>Built from o-blog-minimal</p>
+	</div>
+      </div>
+</body>
+</html>
+

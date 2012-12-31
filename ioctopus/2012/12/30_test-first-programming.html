@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test-First Programming</title>
+    <link rel="stylesheet" type="text/css" href="../../../style/less/o-blog.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="generator" content="o-blog version 1.2-111-gfab6256"/>
+  </head>
+  <body>
+       
+<ul class="nav nav-pills">
+ <p>
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../index.xml">RSS</a></li>
+</p>
+
+
+</ul>
+
+<ul class="breadcrumbs">
+	  <ul class="breadcrumb">
+  <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
+  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/12/index.html">12</a> <span class="divider">/</span></li><li>Test-First Programming</li>
+  </ul>
+
+</ul>
+
+
+<div id="page" class="container">
+
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">30</div>
+	  <div class=" date-m"><a href="../../../ioctopus/2012/12/index.html">Dec</a></div>
+	  <div class=" date-y"><a href="../../../ioctopus/2012/index.html">2012</a>
+	  </div>
+	</div>
+	<div class="span1">
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">Test-First Programming</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../ioctopus/2012/12/22_lisp-with-sdl-notes.html"><i class="icon-chevron-left"></i>&nbsp;Lisp with SDL Notes</a></li><li class="next">&nbsp;</li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <p>
+My most recent coding, an arkanoid clone written in Common Lisp, with a sprite library that I'm creating
+with an eye towards reusability, called for unit testing.
+I know, one should always unit test, but at school I am often forced to use tools e.g. Visual Studio,
+that obfuscate the build process and make it time-consuming to set-up unit tests.
+</p>
+<p>
+Judging from <a href="https://groups.google.com/forum/?fromgroups=#!topic/comp.lang.lisp/5ieAOvLWSTA">this comp.lang.lisp thread</a>,
+many lispers roll their own unit test frameworks.
+In lisp it is fairly trivial (following code taken from the referenced <code>comp.lang.lisp</code> thread):
+</p>
+
+
+<pre class="src src-lisp">(<span style="color: #f0dfaf; font-weight: bold;">defun</span> <span style="color: #8cd0d3;">pick-greater</span> (x y) y)
+(<span style="color: #f0dfaf; font-weight: bold;">defparameter</span> <span style="color: #dfaf8f;">*test-cases*</span>
+  '((+    (3 5)     8)
+    (car  ((3 5))   3)
+    (cdr  ((3 5))   5)
+    (cons (3 5)     (3 . 5))
+    (/    (6 4)     3/2)
+    (cadr ((3 5 7)) 7)
+    ))
+(remove-if #'(<span style="color: #f0dfaf; font-weight: bold;">lambda</span> (fn+args+res)
+               (equal (caddr fn+args+res)
+                      (apply (car fn+args+res) (cadr fn+args+res))))
+ *test-cases*)
+</pre>
+
+<p>
+The last s-expression returns <code>((CDR ((3 5)) 5) (CADR ((3 5 7)) 7))</code> when evaluated,
+showing which tests failed.
+Honestly, when I saw this, I was pretty impressed.
+A rudimentary, yet functional, testing framework in <b>4 lines</b> of code.
+Lisp continues to impress me.
+</p>
+<p>
+Peter Seibel has a <a href="http://www.gigamonkeys.com/book/practical-building-a-unit-test-framework.html">chapter</a> in Practical Common Lisp devoted to creating a unit-testing library.
+He demonstrates proper use of macros (the lisp kind, unrelated to the C kind).
+</p>
+<p>
+I wanted something a bit more feature-full, yet still simple, so I took a look around
+at the available libraries. <a href="https://github.com/OdonataResearchLLC/lisp-unit/wiki">lisp-unit</a> fits the bill.
+There is another page I referenced <a href="http://www.cs.northwestern.edu/academics/courses/325/readings/lisp-unit.html#overview">here</a>. 
+The big takeaway from that page was the use of <code>(use-package :lisp-unit)</code>
+at the start. 
+</p>
+<p>
+The main point of this post has surprisingly, against the best advice from writers of prose, not been introduced yet.
+The <a href="http://www.cs.northwestern.edu/academics/courses/325/readings/lisp-unit.html#overview">second page</a> had a link to <a href="http://www.extremeprogramming.org/rules/testfirst.html">this</a> "Xtreme" Programming article.
+While I agreed with most of the first portion, especially how writing unit test <i>before</i> code forces the requirements to be fully specified,
+I disagreed later on, mostly with the last paragraph:
+</p>
+
+
+
+<pre class="src src-sh">There is a rhythm to developing software unit test first. 
+You create one test to define some small aspect of the problem at hand. 
+Then you create the simplest code that will make that test pass. 
+Then you create a second test. 
+Now you add to the code you just created to make this new test pass, but no more! 
+Not until you have yet a third test. 
+You continue until there is nothing left to test. 
+The coffee maker problem shows an example written<span style="color: #f0dfaf; font-weight: bold;"> in</span> Java.
+
+The code you will create is simple and concise, implementing only the features you wanted. 
+Other developers can see how to use this new code by browsing the tests. 
+Input whose results are undefined will be conspicuously absent from the test suite. 
+</pre>
+
+
+<p>
+So they are basically saying that all my funtions should be discrete, the domain of which consists entirely of points for
+which there are test cases.
+No! This is <b>not</b> the understanding that other people using your code will have.
+They will assume that your functions will work for all values of the input types specified.
+For example, I would expect, say, a function that determined if a point in a rectangle, to work given any point and any rectangle.
+Or at the very least, any point and any rectangle with a positive (non-zero) area.
+This is orthogonally opposed to the test-spec driven function being promoted in the article.
+</p>
+<p>
+Oh, but we can go further.
+I can trivially follow the above advice by hard-wiring in output to match the test spec.
+Think of it like a function defined by a set of ordered pairs, (<i>input</i> <i>output</i>).
+Hopefully everyone can easily concieve of the folly of this sort of philosophy.
+</p>
+<p>
+This concludes Rant #269.4, entitled "Test Specs do not constitute a function definition."
+</p>
+  </div>
+  
+  <footer class="well article-footer">
+    Posted on <time datetime="2012-12-30T04:33:00Z"> Sunday December, 30 2012 at 04:33:00 UTC</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> related tags</h1>
+      <ul>
+	<li class="label label-inverse small"><a href="../../../tags/lisp.html">Lisp</a></li><li class="label label-inverse small"><a href="../../../tags/xp.html">XP</a></li><li class="label label-inverse small"><a href="../../../tags/unit-tests.html">Unit Tests</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>About</h1>
+	      <p>
+  This is the blog of Aaron Decker,
+  a software engineer and mathematician currently
+  attending the University of Wisconsin at Platteville.
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>Links</h1>
+	      <ul>
+		<ul>
+<li><a href="../../../index.html">Home</a>
+</li>
+</ul>
+
+
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1><a href="../../../archives.html">Archives</a></h1>
+	      <ul>
+		<li><a href="../../../ioctopus/2012/12/30_test-first-programming.html">Test-First Programming</a></li> <li><a href="../../../ioctopus/2012/12/22_lisp-with-sdl-notes.html">Lisp with SDL Notes</a></li> <li><a href="../../../ioctopus/2012/12/21_getting-slime-working-on-gentoo.html">Getting SLIME working on Gentoo</a></li> <li><a href="../../../ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html">Math Homework Template using Org-mode/LaTeX</a></li> <li><a href="../../../ioctopus/2012/09/13_state-squid-and-ioctopus.html">State Squid and I/Octopus</a></li> <li><a href="../../../ioctopus/2012/09/10_style-guidelines-revisited.html">Style Guidelines Revisited</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1><a href="../../../tags/index.html">Tags</a></h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/functional-programming.html">Functional Programming</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/gentoo.html">Gentoo</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/homework.html">Homework</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/lisp.html">Lisp</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/math.html">Math</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/org-mode.html">Org Mode</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/repl.html">REPL</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/sdl.html">SDL</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/slime.html">SLIME</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/state.html">State</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/style.html">Style</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/uml.html">UML</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/unit-tests.html">Unit Tests</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/xp.html">XP</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  <!--	  
+ -->
+	  <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">
+	    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br />
+	  All content, unless otherwise noted, is under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+	  <p>Powered by <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	  <p>Built from o-blog-minimal</p>
+	</div>
+      </div>
+</body>
+</html>
+
