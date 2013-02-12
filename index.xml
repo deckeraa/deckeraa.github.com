@@ -5,9 +5,28 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">Clojure/ClojureScript Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/02/11_clojureclojurescript-notes.html"/><updated>2013-02-11T23:58:00Z</updated><published>2013-02-11T23:58:00Z</published><id>ioctopus/2013/02/11_clojureclojurescript-notes.html</id><content type="html">&lt;div id="outline-container-1" class="outline-3"&gt;
-&lt;h3 id="sec-1"&gt;Install Log&lt;/h3&gt;
+  <entry><title type="html">Clojure/ClojureScript Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/02/11_clojureclojurescript-notes.html"/><updated>2013-02-11T23:58:00Z</updated><published>2013-02-11T23:58:00Z</published><id>ioctopus/2013/02/11_clojureclojurescript-notes.html</id><content type="html">&lt;p&gt;
+These notes document an ongoing project and are not yet complete.
+&lt;/p&gt;
+&lt;div id="outline-container-1" class="outline-3"&gt;
+&lt;h3 id="sec-1"&gt;Useful links&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-1"&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://clojure.org/"&gt;http://clojure.org/&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/clojure/clojurescript"&gt;ClojureScript GitHub Site&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-2" class="outline-3"&gt;
+&lt;h3 id="sec-2"&gt;Install Log&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-2"&gt;
 
 &lt;p&gt;It was recommend that I use a build system called &lt;a href="https://github.com/technomancy/leiningen#readme"&gt;Leiningen&lt;/a&gt; to manage Clojure compilation.
 &lt;/p&gt;&lt;ul&gt;
@@ -29,9 +48,9 @@
 
 &lt;/div&gt;
 
-&lt;div id="outline-container-1-1" class="outline-4"&gt;
-&lt;h4 id="sec-1-1"&gt;Modern CLJS Tutorial&lt;/h4&gt;
-&lt;div class="outline-text-4" id="text-1-1"&gt;
+&lt;div id="outline-container-2-1" class="outline-4"&gt;
+&lt;h4 id="sec-2-1"&gt;Modern CLJS Tutorial&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-2-1"&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;git clone https://github.com/magomimmo/modern-cljs.git&lt;/code&gt;
@@ -39,7 +58,7 @@
 &lt;li&gt;&lt;code&gt;cd ./modern-cljs&lt;/code&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;code&gt;lein ring server-headless&lt;/code&gt; failed. Got issued a warning that
-     Leiningen was out of day.
+     Leiningen was out of date.
 &lt;/li&gt;
 &lt;li&gt;&lt;code&gt;lein update&lt;/code&gt;
 &lt;/li&gt;
@@ -52,9 +71,28 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content></entry><entry><title type="html">Installing Hardened Gentoo with Full Disk Encryption</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/01/20_installing-hardened-gentoo-with-full-disk-encryption.html"/><updated>2013-01-20T20:55:00Z</updated><published>2013-01-20T20:55:00Z</published><id>ioctopus/2013/01/20_installing-hardened-gentoo-with-full-disk-encryption.html</id><content type="html">&lt;div id="outline-container-1" class="outline-3"&gt;
-&lt;h3 id="sec-1"&gt;Install Log&lt;/h3&gt;
+</content></entry><entry><title type="html">Installing Hardened Gentoo with Full Disk Encryption</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/01/20_installing-hardened-gentoo-with-full-disk-encryption.html"/><updated>2013-01-20T20:55:00Z</updated><published>2013-01-20T20:55:00Z</published><id>ioctopus/2013/01/20_installing-hardened-gentoo-with-full-disk-encryption.html</id><content type="html">&lt;p&gt;
+These notes document an ongoing project and are not yet complete.
+&lt;/p&gt;
+&lt;div id="outline-container-1" class="outline-3"&gt;
+&lt;h3 id="sec-1"&gt;Useful Links and Documents&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-1"&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://en.gentoo-wiki.com/wiki/DM-Crypt_with_LUKS"&gt;The Gentoo Wiki page on dm-crypt with LUKS&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://world.std.com/~reinhold/dicewarefaq.html"&gt;Diceware Passphrase choosing system&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-2" class="outline-3"&gt;
+&lt;h3 id="sec-2"&gt;Install Log&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-2"&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Booted into the Gentoo minimal install live-cd.
@@ -282,9 +320,9 @@ find . | cpio --quiet -o -H newc | gzip -9 &amp;gt;/boot/initramfs-gentoo-crypt
 
 &lt;/div&gt;
 
-&lt;div id="outline-container-2" class="outline-3"&gt;
-&lt;h3 id="sec-2"&gt;Target System&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-2"&gt;
+&lt;div id="outline-container-3" class="outline-3"&gt;
+&lt;h3 id="sec-3"&gt;Target System&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-3"&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Gateway NV5211u
@@ -298,9 +336,9 @@ find . | cpio --quiet -o -H newc | gzip -9 &amp;gt;/boot/initramfs-gentoo-crypt
 
 &lt;/div&gt;
 
-&lt;div id="outline-container-3" class="outline-3"&gt;
-&lt;h3 id="sec-3"&gt;&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-3"&gt;
+&lt;div id="outline-container-4" class="outline-3"&gt;
+&lt;h3 id="sec-4"&gt;&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-4"&gt;
 
 
 &lt;/div&gt;
