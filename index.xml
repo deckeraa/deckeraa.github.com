@@ -5,7 +5,307 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">Test-First Programming</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/30_test-first-programming.html"/><updated>2012-12-30T04:33:00Z</updated><published>2012-12-30T04:33:00Z</published><id>ioctopus/2012/12/30_test-first-programming.html</id><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/xp.html" term="XP" label="XP"/><category scheme="/tags/unit-tests.html" term="Unit Tests" label="Unit Tests"/><content type="html">&lt;p&gt;
+  <entry><title type="html">Clojure/ClojureScript Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/02/11_clojureclojurescript-notes.html"/><updated>2013-02-11T23:58:00Z</updated><published>2013-02-11T23:58:00Z</published><id>ioctopus/2013/02/11_clojureclojurescript-notes.html</id><content type="html">&lt;div id="outline-container-1" class="outline-3"&gt;
+&lt;h3 id="sec-1"&gt;Install Log&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-1"&gt;
+
+&lt;p&gt;It was recommend that I use a build system called &lt;a href="https://github.com/technomancy/leiningen#readme"&gt;Leiningen&lt;/a&gt; to manage Clojure compilation.
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Downloaded the &lt;code&gt;lein&lt;/code&gt; script to my scripts folder (which has execute permissions).
+&lt;/li&gt;
+&lt;li&gt;Wow. That was easy. Now running &lt;code&gt;lein repl&lt;/code&gt; form anywhere starts a repl that appears
+      to work.
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;    # I dont think that the following steps were necessary.
+    # - Now to install ClojureScript:
+    #   - &lt;code&gt;git clone git://github.com/clojure/clojurescript.git&lt;/code&gt;
+    #   - &lt;code&gt;cd ./clojurescript&lt;/code&gt;
+    #   - &lt;code&gt;./scripts/bootstrap&lt;/code&gt;
+    #   - Took about a minute to install. No problems so far.
+    #   - &lt;code&gt;export CLOJURESCRIPT_HOME=/home/aaron/scripts/clojurescript&lt;/code&gt;
+&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-1-1" class="outline-4"&gt;
+&lt;h4 id="sec-1-1"&gt;Modern CLJS Tutorial&lt;/h4&gt;
+&lt;div class="outline-text-4" id="text-1-1"&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git clone https://github.com/magomimmo/modern-cljs.git&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd ./modern-cljs&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lein ring server-headless&lt;/code&gt; failed. Got issued a warning that
+     Leiningen was out of day.
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lein update&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lein ring server-headless&lt;/code&gt; works now.
+&lt;/li&gt;
+&lt;li&gt;CURRENT&lt;sub&gt;END&lt;/sub&gt;&lt;sub&gt;OF&lt;/sub&gt;&lt;sub&gt;NOTES&lt;/sub&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content></entry><entry><title type="html">Installing Hardened Gentoo with Full Disk Encryption</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/01/20_installing-hardened-gentoo-with-full-disk-encryption.html"/><updated>2013-01-20T20:55:00Z</updated><published>2013-01-20T20:55:00Z</published><id>ioctopus/2013/01/20_installing-hardened-gentoo-with-full-disk-encryption.html</id><content type="html">&lt;div id="outline-container-1" class="outline-3"&gt;
+&lt;h3 id="sec-1"&gt;Install Log&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-1"&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Booted into the Gentoo minimal install live-cd.
+&lt;/li&gt;
+&lt;li&gt;Check hard drive (/dev/sda) for bad sectors: &lt;code&gt;/sbin/badblocks -c 10240 -n -t random -v /dev/sda&lt;/code&gt;.
+      Bad sectors can contain old information that could compromise data.
+      This took several hours. No bad blocks were found.
+&lt;/li&gt;
+&lt;li&gt;Overwrite hard drive with random data: &lt;code&gt;dd if=/dev/urandom of=/dev/sda&lt;/code&gt;.
+      This operation took 74220.1 seconds, or about 20.6 hours. 
+      Creating random numbers must be hard work.
+&lt;/li&gt;
+&lt;li&gt;While I did this I set up wpa&lt;sub&gt;supplicant&lt;/sub&gt; to connect to my wireless network.
+      Don't forget to start dhcpcd.
+&lt;/li&gt;
+&lt;li&gt;Partitioned disk. This is the first linux install where I haven't had to work around pre-existing partitions :)
+
+&lt;table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides"&gt;
+&lt;caption&gt;&lt;/caption&gt;
+&lt;colgroup&gt;&lt;col class="left" /&gt;&lt;col class="left" /&gt;&lt;col class="left" /&gt;&lt;col class="left" /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;th scope="col" class="left"&gt;Partition&lt;/th&gt;&lt;th scope="col" class="left"&gt;Device&lt;/th&gt;&lt;th scope="col" class="left"&gt;Size&lt;/th&gt;&lt;th scope="col" class="left"&gt;Reason for size&lt;/th&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;td class="left"&gt;/boot&lt;/td&gt;&lt;td class="left"&gt;/dev/sda1&lt;/td&gt;&lt;td class="left"&gt;512 MB&lt;/td&gt;&lt;td class="left"&gt;Hold several kernel images&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="left"&gt;swap&lt;/td&gt;&lt;td class="left"&gt;/dev/sda2&lt;/td&gt;&lt;td class="left"&gt;8 GB&lt;/td&gt;&lt;td class="left"&gt;2 GB Swap + (4 real + 2 swap) image&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="left"&gt;/&lt;/td&gt;&lt;td class="left"&gt;/dev/sda3&lt;/td&gt;&lt;td class="left"&gt;311.5 GB&lt;/td&gt;&lt;td class="left"&gt;Remainder of drive&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;Load encryption modules: &lt;code&gt;for i in dm-crypt dm-mod serpent sha256 blowfish;do modprobe $i;done&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Running &lt;code&gt;cryptsetup --help&lt;/code&gt; reveals that my live CD has the cryptsetup-luks executable
+&lt;/li&gt;
+&lt;li&gt;Set-up swap encryption for use during installation (from wiki page):
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;pre class="src src-sh"&gt;cryptsetup -c blowfish -h sha256 -d /dev/random create swap /dev/sda2 
+mkswap /dev/mapper/swap
+swapon /dev/mapper/swap
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;I want 64-bit AES module: &lt;code&gt;modprobe aes_x86_64&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Encrypt root partition with keyphrase generated using Diceware: 
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;    &lt;code&gt;cryptsetup -y --cipher serpent-cbc-essiv:sha256 --key-size 256 luksFormat /dev/sda3&lt;/code&gt;
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Create root mapping: &lt;code&gt;cryptsetup luksOpen /dev/sda3 root&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Format root to ext3: &lt;code&gt;/sbin/mkfs.ext3 -j -m 1 -O dir_index,filetype,sparse_super /dev/mapper/root&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Format boot to ext2: &lt;code&gt;mkfs.ext2 /dev/sda1&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Mount root: &lt;code&gt;mount -t ext3 /dev/mapper/root /mnt/gentoo&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Go to root: &lt;code&gt;cd /mnt/gentoo&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Downloaded stage3-amd64-hardened-20130110.tar.bz2 from a mirror. &lt;code&gt;links http://www.gentoo.org/main/en/mirrors.xml&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Checked tar.bz2 integrity with sha512sum.
+&lt;/li&gt;
+&lt;li&gt;Extract files: &lt;code&gt;tar xvpjf stage3-amd64-hardened-20130110.tar.bz2&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Created &lt;code&gt;/mnt/gentoo/etc/portage/make.conf&lt;/code&gt;:
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;pre class="src src-sh"&gt;&lt;span style="color: #dfaf8f;"&gt;CFLAGS&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"-O2 -pipe -mtune=athlon64"&lt;/span&gt;
+&lt;span style="color: #dfaf8f;"&gt;CXXFLAGS&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"${CFLAGS}"&lt;/span&gt;
+&lt;span style="color: #dfaf8f;"&gt;MAKEOPTS&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"-j3"&lt;/span&gt;
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Set mirrors in make.conf: ~mirrorselect -i -o &amp;gt;&amp;gt; /mnt/gentoo/etc/portage/make.conf
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;    &amp;amp;&amp;amp; mirrorselect -i -r -o &amp;gt;&amp;gt; /mnt/gentoo/etc/portage/make.conf~. 
+    This had no effect. I will skip this step and come back later if
+    it turns out I really needed it. TODO
+&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Copy DNS info: &lt;code&gt;cp -L /etc/resolv.conf /mnt/gentoo/etc/&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Mount proc, sys, and dev:
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;pre class="src src-sh"&gt;mount -t proc none /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chroot!
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;pre class="src src-sh"&gt;chroot /mnt/gentoo /bin/bash
+&lt;span style="color: #8cd0d3;"&gt;source&lt;/span&gt; /etc/profile
+&lt;span style="color: #8cd0d3;"&gt;export&lt;/span&gt; &lt;span style="color: #dfaf8f;"&gt;PS1&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"(chroot) $PS1"&lt;/span&gt;
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Unpack portage snapshot:
+      &lt;code&gt;mkdir /usr/portage &amp;amp;&amp;amp; emerge-webrsync&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;I set the profile to "hardened/inux/amd64/" using eselect.
+&lt;/li&gt;
+&lt;li&gt;Set USE flags in make.conf.
+&lt;/li&gt;
+&lt;li&gt;Emerge the kernel sources: &lt;code&gt;emerge -av gentoo-sources&lt;/code&gt;.
+&lt;/li&gt;
+&lt;li&gt;Update portage for good measure &lt;code&gt;emerge -av portage&lt;/code&gt;.
+&lt;/li&gt;
+&lt;li&gt;Create an initramfs archive for early userspace:
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;pre class="src src-sh"&gt;&lt;span style="color: #8cd0d3;"&gt;cd&lt;/span&gt; /usr/portage/sys-apps/busybox
+&lt;span style="color: #dfaf8f;"&gt;BUSYBOX_TARGET&lt;/span&gt;=&lt;span style="color: #fa8072;"&gt;`emerge -pvO busybox | grep -o "busybox-[-0-9.r]*"`&lt;/span&gt;
+ebuild $&lt;span style="color: #dfaf8f;"&gt;BUSYBOX_TARGET&lt;/span&gt;.ebuild clean
+ebuild $&lt;span style="color: #dfaf8f;"&gt;BUSYBOX_TARGET&lt;/span&gt;.ebuild unpack
+&lt;span style="color: #8cd0d3;"&gt;cd&lt;/span&gt; /var/tmp/portage/sys-apps/$&lt;span style="color: #dfaf8f;"&gt;BUSYBOX_TARGET&lt;/span&gt;/work/busybox*
+make defconfig
+sed -i -e &lt;span style="color: #cc9393;"&gt;"s|# CONFIG_STATIC is not set|CONFIG_STATIC=y|"&lt;/span&gt; .config
+sed -i -e &lt;span style="color: #cc9393;"&gt;"s|# CONFIG_INSTALL_NO_USR is not set|CONFIG_INSTALL_NO_USR=y|"&lt;/span&gt; .config
+
+make &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;this failed at first, with output of&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;&amp;gt; Failed: -Wl,--start-group -lcrypt -lm -Wl,--end-group&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;&amp;gt; As a shot in the dark, I ran&lt;/span&gt;
+emerge -av app-crypt/ccrypt &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;and&lt;/span&gt;
+revdep-rebuild
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;then running&lt;/span&gt;
+make &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;resulted in&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;&amp;gt; Trying libraries: crypt m&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;&amp;gt;  Library crypt is not needed, excluding it&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;&amp;gt;   Library m is need, can't exclude it (yet)&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;But it built :)&lt;/span&gt;
+
+make busybox.links
+mkdir /build_initramfs
+./applets/install.sh /build_initramfs --symlinks
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;used links to download http://waku.info/uploads/misc/crypt_guide/init to /build_initramfs&lt;/span&gt;
+&lt;span style="color: #8cd0d3;"&gt;cd&lt;/span&gt; ./build_initramfs
+chmod 755 init
+mkdir {proc,sys,new-root,etc,dev}
+mknod --mode=0660 ./dev/null c 1 3 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;note the dot in ./dev/null&lt;/span&gt;
+mknod --mode=0600 ./dev/console c 5 1 &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;note the dot in ./dev/console&lt;/span&gt;
+&lt;span style="color: #dfaf8f;"&gt;USE&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"static"&lt;/span&gt; emerge -av cryptsetup &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;I need it to be statically linked for the initramfs&lt;/span&gt;
+cp -p &lt;span style="color: #fa8072;"&gt;`which cryptsetup`&lt;/span&gt; /build_initramfs/sbin/
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;Then you need to do the equivalent of&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;&amp;gt; cp /path/to/applets /path/to/build_initramfs/etc/ &lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;I did this from the original busybox directory, using screen&lt;/span&gt;
+sed -i -e &lt;span style="color: #cc9393;"&gt;'s/\/bin\/sh/\/bin\/ash/g'&lt;/span&gt; init &lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;replace /bin/sh with /bin/ash in init&lt;/span&gt;
+&lt;span style="color: #7f9f7f;"&gt;# &lt;/span&gt;&lt;span style="color: #7f9f7f;"&gt;script due to Busybox not including a /bin/sh applet in busybox &amp;gt;= busybox-1.1.3&lt;/span&gt;
+find . | cpio --quiet -o -H newc | gzip -9 &amp;gt;/boot/initramfs-gentoo-crypt  
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Configure kernel as per &lt;a href="http://en.gentoo-wiki.com/wiki/DM-Crypt_with_LUKS#Kernel_Configuration"&gt;http://en.gentoo-wiki.com/wiki/DM-Crypt_with_LUKS#Kernel_Configuration&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cd /usr/src/linux &amp;amp;&amp;amp; make menuconfig&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Couldn't find the "Initial RAM disk (initramfs/initrd) support" though.
+&lt;/li&gt;
+&lt;li&gt;Update: the option got moved to the "General Options menu".
+&lt;/li&gt;
+&lt;li&gt;Update: letting the kernel make initramfs. Gave it "/build&lt;sub&gt;initramfs&lt;/sub&gt;".
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/li&gt;
+&lt;li&gt;Compiled kernal: &lt;code&gt;make &amp;amp;&amp;amp; make modules_install &amp;amp;&amp;amp; make install&lt;/code&gt; for /usr/src/linux
+&lt;/li&gt;
+&lt;li&gt;Created /etc/fstab as per &lt;a href="http://en.gentoo-wiki.com/wiki/DM-Crypt_with_LUKS#.2Fetc.2Ffstab"&gt;http://en.gentoo-wiki.com/wiki/DM-Crypt_with_LUKS#.2Fetc.2Ffstab&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;Followed steps from 8b to 10 in Gentoo install manual.
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;emerge -av grub&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Created /boot/grub/grub.conf TODO post the file contents
+&lt;/li&gt;
+&lt;li&gt;Ran &lt;code&gt;grub-install /dev/sda&lt;/code&gt;
+&lt;/li&gt;
+&lt;li&gt;Cleaned-up and rebooted &amp;hellip; and blank prompt. Thinking back on it, I'm pretty sure I didn't mount /dev/sda1 before creating /boot,
+      which means grubs config file is actually on /dev/sda3, not /dev/sda1 where it needs to be. Oops.
+&lt;/li&gt;
+&lt;li&gt;Fixed that. Now I get a grub boot menu.
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Kernel panic - not syncing: No init found. Try passing init= option to kernel.&lt;/code&gt; Great.
+&lt;/li&gt;
+&lt;li&gt;Did some troubleshooting and found that the init script link on the wiki page was broken.
+      Copied the script in its entirety to &lt;a href="#deckeraa.github.com-init"&gt;deckeraa.github.com/init&lt;/a&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-2" class="outline-3"&gt;
+&lt;h3 id="sec-2"&gt;Target System&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-2"&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Gateway NV5211u
+&lt;/li&gt;
+&lt;li&gt;AMD Athlon 64 X2 QL-65
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div id="outline-container-3" class="outline-3"&gt;
+&lt;h3 id="sec-3"&gt;&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-3"&gt;
+
+
+&lt;/div&gt;
+&lt;/div&gt;
+</content></entry><entry><title type="html">Test-First Programming</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/30_test-first-programming.html"/><updated>2012-12-30T04:33:00Z</updated><published>2012-12-30T04:33:00Z</published><id>ioctopus/2012/12/30_test-first-programming.html</id><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/xp.html" term="XP" label="XP"/><category scheme="/tags/unit-tests.html" term="Unit Tests" label="Unit Tests"/><content type="html">&lt;p&gt;
 My most recent coding, an arkanoid clone written in Common Lisp, with a sprite library that I'm creating
 with an eye towards reusability, called for unit testing.
 I know, one should always unit test, but at school I am often forced to use tools e.g. Visual Studio,
@@ -92,7 +392,8 @@ Hopefully everyone can easily concieve of the folly of this sort of philosophy.
 &lt;/p&gt;
 &lt;p&gt;
 This concludes Rant #269.4, entitled "Test Specs do not constitute a function definition."
-&lt;/p&gt;</content></entry><entry><title type="html">Lisp with SDL Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/22_lisp-with-sdl-notes.html"/><updated>2012-12-22T17:14:00Z</updated><published>2012-12-22T17:14:00Z</published><id>ioctopus/2012/12/22_lisp-with-sdl-notes.html</id><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/sdl.html" term="SDL" label="SDL"/><category scheme="/tags/repl.html" term="REPL" label="REPL"/><content type="html">&lt;div id="outline-container-1" class="outline-3"&gt;
+&lt;/p&gt;
+</content></entry><entry><title type="html">Lisp with SDL Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2012/12/22_lisp-with-sdl-notes.html"/><updated>2012-12-22T17:14:00Z</updated><published>2012-12-22T17:14:00Z</published><id>ioctopus/2012/12/22_lisp-with-sdl-notes.html</id><category scheme="/tags/lisp.html" term="Lisp" label="Lisp"/><category scheme="/tags/sdl.html" term="SDL" label="SDL"/><category scheme="/tags/repl.html" term="REPL" label="REPL"/><content type="html">&lt;div id="outline-container-1" class="outline-3"&gt;
 &lt;h3 id="sec-1"&gt;Installing LispBuilder&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-1"&gt;
 
