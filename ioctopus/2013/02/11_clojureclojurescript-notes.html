@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Clojure/ClojureScript Notes</title>
+    <link rel="stylesheet" type="text/css" href="../../../style/less/o-blog.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="generator" content="o-blog version 1.2-111-gfab6256"/>
+  </head>
+  <body>
+       
+<ul class="nav nav-pills">
+ <p>
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../index.xml">RSS</a></li>
+</p>
+
+
+</ul>
+
+<ul class="breadcrumbs">
+	  <ul class="breadcrumb">
+  <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
+  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2013/02/index.html">02</a> <span class="divider">/</span></li><li>Clojure/ClojureScript Notes</li>
+  </ul>
+
+</ul>
+
+
+<div id="page" class="container">
+
+  <header class="article-header">
+
+    <div class="well">
+      <div class="row">
+	<div class="date span1">
+	  <div class=" date-d">11</div>
+	  <div class=" date-m"><a href="../../../ioctopus/2013/02/index.html">Feb</a></div>
+	  <div class=" date-y"><a href="../../../ioctopus/2013/index.html">2013</a>
+	  </div>
+	</div>
+	<div class="span1">
+
+	</div>
+	<h1 class="offset2" style="font-size: 250%">Clojure/ClojureScript Notes</h1>
+      </div>
+      <nav>
+	<ul class="pager">
+	  <li class="previous"><a href="../../../ioctopus/2013/01/20_installing-hardened-gentoo-with-full-disk-encryption.html"><i class="icon-chevron-left"></i>&nbsp;Installing Hardened Gentoo with Full Disk Encryption</a></li><li class="next">&nbsp;</li>
+	</ul>
+      </nav>
+    </div>
+
+  </header>
+  <div class="article-content">
+    <div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">Install Log</h3>
+<div class="outline-text-3" id="text-1">
+
+<p>It was recommend that I use a build system called <a href="https://github.com/technomancy/leiningen#readme">Leiningen</a> to manage Clojure compilation.
+</p><ul>
+<li>Downloaded the <code>lein</code> script to my scripts folder (which has execute permissions).
+</li>
+<li>Wow. That was easy. Now running <code>lein repl</code> form anywhere starts a repl that appears
+      to work.
+</li>
+</ul>
+
+<p>    # I dont think that the following steps were necessary.
+    # - Now to install ClojureScript:
+    #   - <code>git clone git://github.com/clojure/clojurescript.git</code>
+    #   - <code>cd ./clojurescript</code>
+    #   - <code>./scripts/bootstrap</code>
+    #   - Took about a minute to install. No problems so far.
+    #   - <code>export CLOJURESCRIPT_HOME=/home/aaron/scripts/clojurescript</code>
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1">Modern CLJS Tutorial</h4>
+<div class="outline-text-4" id="text-1-1">
+
+<ul>
+<li><code>git clone https://github.com/magomimmo/modern-cljs.git</code>
+</li>
+<li><code>cd ./modern-cljs</code>
+</li>
+<li><code>lein ring server-headless</code> failed. Got issued a warning that
+     Leiningen was out of day.
+</li>
+<li><code>lein update</code>
+</li>
+<li><code>lein ring server-headless</code> works now.
+</li>
+<li>CURRENT<sub>END</sub><sub>OF</sub><sub>NOTES</sub>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+  </div>
+  
+  <footer class="well article-footer">
+    Posted on <time datetime="2013-02-11T23:58:00Z"> Monday February, 11 2013 at 23:58:00 UTC</time>.
+    <nav class="tag-cloud">
+      <h1><i class="icon-tags"></i> related tags</h1>
+      <ul>
+	
+      </ul>
+    </nav>
+  </footer>
+
+      </div>
+      <div id="footer">
+	<div class="container">
+	  <div class="row">
+	    <section class="span3">
+	      <h1>About</h1>
+	      <p>
+  This is the blog of Aaron Decker,
+  a software engineer and mathematician currently
+  attending the University of Wisconsin at Platteville.
+</p>
+	    </section>
+	    <nav id="links" class="span3">
+	      <h1>Links</h1>
+	      <ul>
+		<ul>
+<li><a href="../../../index.html">Home</a>
+</li>
+</ul>
+
+
+
+	      </ul>
+	    </nav>
+	    <nav id="archives" class="span3">
+	      <h1><a href="../../../archives.html">Archives</a></h1>
+	      <ul>
+		<li><a href="../../../ioctopus/2013/02/11_clojureclojurescript-notes.html">Clojure/ClojureScript Notes</a></li> <li><a href="../../../ioctopus/2013/01/20_installing-hardened-gentoo-with-full-disk-encryption.html">Installing Hardened Gentoo with Full Disk Encryption</a></li> <li><a href="../../../ioctopus/2012/12/30_test-first-programming.html">Test-First Programming</a></li> <li><a href="../../../ioctopus/2012/12/22_lisp-with-sdl-notes.html">Lisp with SDL Notes</a></li> <li><a href="../../../ioctopus/2012/12/21_getting-slime-working-on-gentoo.html">Getting SLIME working on Gentoo</a></li> <li><a href="../../../ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html">Math Homework Template using Org-mode/LaTeX</a></li> <li><a href="../../../ioctopus/2012/09/13_state-squid-and-ioctopus.html">State Squid and I/Octopus</a></li> <li><a href="../../../ioctopus/2012/09/10_style-guidelines-revisited.html">Style Guidelines Revisited</a></li> 
+	      </ul>
+	    </nav>
+	    <nav class="tags span3">
+	      <h1><a href="../../../tags/index.html">Tags</a></h1>
+	      <ul>
+  <li style="font-size: 80.00%;"><a href="../../../tags/emacs.html">Emacs</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/functional-programming.html">Functional Programming</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/gentoo.html">Gentoo</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/homework.html">Homework</a></li> <li style="font-size: 220.00%;"><a href="../../../tags/lisp.html">Lisp</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/math.html">Math</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/org-mode.html">Org Mode</a></li> <li style="font-size: 150.00%;"><a href="../../../tags/repl.html">REPL</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/sdl.html">SDL</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/slime.html">SLIME</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/state.html">State</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/style.html">Style</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/uml.html">UML</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/unit-tests.html">Unit Tests</a></li> <li style="font-size: 80.00%;"><a href="../../../tags/xp.html">XP</a></li> 
+</ul>
+
+	    </nav>
+	  </div>
+	</div>
+	<div class="copyright" style="text-align: center;">
+	  <!--	  
+ -->
+	  <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">
+	    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" /></a><br />
+	  All content, unless otherwise noted, is under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+	  <p>Powered by <a href="https://github.com/renard/o-blog">o-blog</a>.</p>
+	  <p>Built from o-blog-minimal</p>
+	</div>
+      </div>
+</body>
+</html>
+
