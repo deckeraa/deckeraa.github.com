@@ -5,7 +5,32 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">Clojure/ClojureScript Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/02/11_clojureclojurescript-notes.html"/><updated>2013-02-11T23:58:00Z</updated><published>2013-02-11T23:58:00Z</published><id>ioctopus/2013/02/11_clojureclojurescript-notes.html</id><content type="html">&lt;p&gt;
+  <entry><title type="html">Connecting to the UWPlatt network</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/03/07_connecting-to-the-uwplatt-network.html"/><updated>2013-03-07T18:30:00Z</updated><published>2013-03-07T18:30:00Z</published><id>ioctopus/2013/03/07_connecting-to-the-uwplatt-network.html</id><content type="html">&lt;p&gt;
+Connecting to the UWPlatt wireless network, a network on my university's campus, can be tricky.
+Below is a snippet from my &lt;code&gt;/etc/wpa_supplicant/wpa_supplicant.conf&lt;/code&gt;.
+Be sure to replace &lt;code&gt;your_netid_username&lt;/code&gt; and &lt;code&gt;your_password&lt;/code&gt; with your
+actual username and password.
+&lt;/p&gt;
+
+
+
+&lt;pre class="src src-sh"&gt;&lt;span style="color: #dfaf8f;"&gt;network&lt;/span&gt;={
+        &lt;span style="color: #dfaf8f;"&gt;ssid&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"UWPlatt"&lt;/span&gt;
+        &lt;span style="color: #dfaf8f;"&gt;priority&lt;/span&gt;=6
+        &lt;span style="color: #dfaf8f;"&gt;proto&lt;/span&gt;=RSN
+        &lt;span style="color: #dfaf8f;"&gt;pairwise&lt;/span&gt;=CCMP
+        &lt;span style="color: #dfaf8f;"&gt;group&lt;/span&gt;=CCMP
+        &lt;span style="color: #dfaf8f;"&gt;key_mgmt&lt;/span&gt;=WPA-EAP
+        &lt;span style="color: #dfaf8f;"&gt;eap&lt;/span&gt;=PEAP
+        &lt;span style="color: #dfaf8f;"&gt;identity&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"your_netid_username"&lt;/span&gt;
+        &lt;span style="color: #dfaf8f;"&gt;anonymous_identity&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"anon"&lt;/span&gt;
+        &lt;span style="color: #dfaf8f;"&gt;password&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"your_password"&lt;/span&gt;
+        &lt;span style="color: #dfaf8f;"&gt;phase2&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"auth=MSCHAPv2"&lt;/span&gt;
+}
+&lt;/pre&gt;
+
+
+</content></entry><entry><title type="html">Clojure/ClojureScript Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/02/11_clojureclojurescript-notes.html"/><updated>2013-02-11T23:58:00Z</updated><published>2013-02-11T23:58:00Z</published><id>ioctopus/2013/02/11_clojureclojurescript-notes.html</id><content type="html">&lt;p&gt;
 These notes document an ongoing project and are not yet complete.
 &lt;/p&gt;
 &lt;div id="outline-container-1" class="outline-3"&gt;
@@ -67,6 +92,7 @@ These notes document an ongoing project and are not yet complete.
 &lt;li&gt;CURRENT&lt;sub&gt;END&lt;/sub&gt;&lt;sub&gt;OF&lt;/sub&gt;&lt;sub&gt;NOTES&lt;/sub&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -387,7 +413,8 @@ I wanted something a bit more feature-full, yet still simple, so I took a look a
 at the available libraries. &lt;a href="https://github.com/OdonataResearchLLC/lisp-unit/wiki"&gt;lisp-unit&lt;/a&gt; fits the bill.
 There is another page I referenced &lt;a href="http://www.cs.northwestern.edu/academics/courses/325/readings/lisp-unit.html#overview"&gt;here&lt;/a&gt;. 
 The big takeaway from that page was the use of &lt;code&gt;(use-package :lisp-unit)&lt;/code&gt;
-at the start. 
+at the start.
+I loaded the package using quicklisp: &lt;code&gt;(ql:quickload :lisp-unit)&lt;/code&gt;.
 &lt;/p&gt;
 &lt;p&gt;
 The main point of this post has surprisingly, against the best advice from writers of prose, not been introduced yet.

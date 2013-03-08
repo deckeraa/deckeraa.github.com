@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>State Squid and I/Octopus</title>
+    <title>Connecting to the UWPlatt network</title>
     <link rel="stylesheet" type="text/css" href="../../../style/less/o-blog.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version 1.2-111-gfab6256"/>
@@ -21,7 +21,7 @@
 <ul class="breadcrumbs">
 	  <ul class="breadcrumb">
   <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
-  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/index.html">2012</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2012/09/index.html">09</a> <span class="divider">/</span></li><li>State Squid and I/Octopus</li>
+  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2013/03/index.html">03</a> <span class="divider">/</span></li><li>Connecting to the UWPlatt network</li>
   </ul>
 
 </ul>
@@ -34,19 +34,19 @@
     <div class="well">
       <div class="row">
 	<div class="date span1">
-	  <div class=" date-d">13</div>
-	  <div class=" date-m"><a href="../../../ioctopus/2012/09/index.html">Sep</a></div>
-	  <div class=" date-y"><a href="../../../ioctopus/2012/index.html">2012</a>
+	  <div class=" date-d">07</div>
+	  <div class=" date-m"><a href="../../../ioctopus/2013/03/index.html">Mar</a></div>
+	  <div class=" date-y"><a href="../../../ioctopus/2013/index.html">2013</a>
 	  </div>
 	</div>
 	<div class="span1">
 
 	</div>
-	<h1 class="offset2" style="font-size: 250%">State Squid and I/Octopus</h1>
+	<h1 class="offset2" style="font-size: 250%">Connecting to the UWPlatt network</h1>
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../ioctopus/2012/09/10_style-guidelines-revisited.html"><i class="icon-chevron-left"></i>&nbsp;Style Guidelines Revisited</a></li><li class="next" style="text-align: right;"><a href="../../../ioctopus/2012/12/19_math-homework-template-using-org-modelatex.html">Math Homework Template using Org-mode/LaTeX&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../ioctopus/2013/02/11_clojureclojurescript-notes.html"><i class="icon-chevron-left"></i>&nbsp;Clojure/ClojureScript Notes</a></li><li class="next">&nbsp;</li>
 	</ul>
       </nav>
     </div>
@@ -54,79 +54,39 @@
   </header>
   <div class="article-content">
     <p>
-   <img src="./images/state-squid-uml.png"  alt="./images/state-squid-uml.png" />
-</p>
-
-<p class="verse">
-Once upon a time, in a land so fine,<br/>
-where analysis happened all the time,<br/>
-lived a happy little class family.<br/>
-Yes, it was in the land of OO, where lines<br/>
-and boxes and use case scenarios<br/>
-frolic playfully in the street and all<br/>
-the happy classes live together with<br/>
-minimal coupling and high cohesion.<br/>
-<br/>
-Twas dusk one night at the coding class house,<br/>
-where lived a family whose existence was due<br/>
-to an assignment from a programming class.<br/>
-Twas the RPN family of who<br/>
-members were Susie Stack, sibling Quentin Queue,<br/>
-RPNEval and Driver Class too.<br/>
-Daddy Driver Class tucked them into bed<br/>
-along with the state from their objects, he said.<br/>
-Scary stories of high coupling he read,<br/>
-but he assured them that all those bugs were long dead.<br/>
-<br/>
-Those bugs were before we had UML,<br/>
-now we have OO and life is just swell.<br/>
-With those words he bid them all a good night,<br/>
-he bid them sweet dreams and turned off the light.<br/>
-He thought to himself, as he went to his room,<br/>
-Their state is encapsulated, all that<br/>
-talk from functional programmers, of doom<br/>
-and despair from state was lame and old hat.<br/>
-He had it all taken care of, put in each class,<br/>
-the lambda and OO schools had reached an impasse.<br/>
-<br/>
-But all through the night he had quite a fright,<br/>
-unspeakable horrors passing through his mind's sight.<br/>
-He dreamt of a kraken, no, just a huge squid,<br/>
-that just stood and stared as he wondered what it did.<br/>
-It's cavernous eyes peered deep into his soul,<br/>
-this must be a prank, just a functional troll.<br/>
-But there its singular figure remained,<br/>
-on the UML of his soul it was firmly engrained.<br/>
-Its tentacles were just lines, his face a mere shape,<br/>
-But the diagram of his family it threatened to reshape.<br/>
-<br/>
-Rebellion against father, but just in his dream,<br/>
-for RPNEval was drinking from the forbidden stream.<br/>
-That ethereal stream that is called I/O,<br/>
-whose state at runtime, nobody knows.<br/>
-The paternal class cursed in frustration, no fear he could quell,<br/>
-he thought he had had it all planned out so well.<br/>
-But his model was naive, much too simple to be good,<br/>
-he hadn't modeled the state of the <i>whole</i> program like he should.<br/>
-But now complexity, and inter-dependency too,<br/>
-clamored around his program, like the monkeys at a zoo.<br/>
-<br/>
-Now there is a moral to this story, something just for you,<br/>
-model <i>all</i> the state in your program, or this too you will rue.<br/>
+Connecting to the UWPlatt wireless network, a network on my university's campus, can be tricky.
+Below is a snippet from my <code>/etc/wpa_supplicant/wpa_supplicant.conf</code>.
+Be sure to replace <code>your_netid_username</code> and <code>your_password</code> with your
+actual username and password.
 </p>
 
 
+
+<pre class="src src-sh"><span style="color: #dfaf8f;">network</span>={
+        <span style="color: #dfaf8f;">ssid</span>=<span style="color: #cc9393;">"UWPlatt"</span>
+        <span style="color: #dfaf8f;">priority</span>=6
+        <span style="color: #dfaf8f;">proto</span>=RSN
+        <span style="color: #dfaf8f;">pairwise</span>=CCMP
+        <span style="color: #dfaf8f;">group</span>=CCMP
+        <span style="color: #dfaf8f;">key_mgmt</span>=WPA-EAP
+        <span style="color: #dfaf8f;">eap</span>=PEAP
+        <span style="color: #dfaf8f;">identity</span>=<span style="color: #cc9393;">"your_netid_username"</span>
+        <span style="color: #dfaf8f;">anonymous_identity</span>=<span style="color: #cc9393;">"anon"</span>
+        <span style="color: #dfaf8f;">password</span>=<span style="color: #cc9393;">"your_password"</span>
+        <span style="color: #dfaf8f;">phase2</span>=<span style="color: #cc9393;">"auth=MSCHAPv2"</span>
+}
+</pre>
 
 
 
   </div>
   
   <footer class="well article-footer">
-    Posted on <time datetime="2012-09-13T15:23:00Z"> Thursday September, 13 2012 at 15:23:00 UTC</time>.
+    Posted on <time datetime="2013-03-07T18:30:00Z"> Thursday March, 07 2013 at 18:30:00 UTC</time>.
     <nav class="tag-cloud">
       <h1><i class="icon-tags"></i> related tags</h1>
       <ul>
-	<li class="label label-inverse small"><a href="../../../tags/functional-programming.html">Functional Programming</a></li><li class="label label-inverse small"><a href="../../../tags/uml.html">UML</a></li><li class="label label-inverse small"><a href="../../../tags/state.html">State</a></li>
+	
       </ul>
     </nav>
   </footer>
