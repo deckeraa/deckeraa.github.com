@@ -1,0 +1,98 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% series.tex
+% A one-page summary of all the convergence
+% tests covered in Chapter 12 of 
+% Stewart Calculus, 6th ed.
+%
+% Copyright 2013 Aaron Decker
+%
+% This work is licensed under a Creative Commons
+% Attribution-ShareAlike 3.0 Unported License.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+
+%Packages%{{{
+\usepackage{indentfirst}
+\usepackage[left=1in,right=1in,top=1in,bottom=.7in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}%}}}
+
+%Header style rules%{{{
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\footrulewidth}{0pt}%}}}
+
+%Header Information%{{{
+\large
+\lhead{Aaron Decker, http://deckeraa.github.com}
+%\lhead{Stay Afloat in the WATR}
+\rhead{\today}
+
+%\lfoot{decker49@gmail.com} 
+%}}}
+
+\setcounter{section}{11}
+
+\begin{document}
+\thispagestyle{fancy}
+%\doublespacing
+%\tiny
+
+\addtolength{\parindent}{-.2in}
+
+\section{Infinite Sequences and Series}
+\subsection{Sequences}
+A sequence is called \underline{monotonic} if it is either increasing or decreasing, not both. \\
+A sequence is \underline{bounded above} if there exists $M$ such that $a_n \leq M$ for all $n\geq1$. \\
+A sequence is \underline{bounded below} if there exists $m$ such that $a_n \geq m$ for all $n\geq1$. \\
+Every bounded, monotonic sequence is convergent.
+
+\subsection{Series}
+\textbf{Geometric Series}: $\sum_{n=1}^{\infty} ar^{n-1} = a + ar + ar^2 + \ldots$ \\
+Convergent if $|r| < 1$, then sum is $\sum_{n=1}^{\infty} ar^{n-1} = \frac{a}{1-r}$ \\
+Divergent if $|r| \geq 1$.
+
+\textbf{Telescoping Series}: Write out several terms and look for a pattern of cancellation.
+
+\textbf{Test for Divergence}: If $\lim_{n->\infty} a_n$ does not exist or $\lim_{n->\infty} a_n \neq 0$,
+then $\sum^{\infty}_{n=1} a_n$ diverges. \\
+WARNING: The Test for Divergence cannot prove that a series is convergent.
+
+\subsection{The Integral Tests and Estimates of Sums}
+\textbf{Integral Test}:\\
+Preconditions: $f(x)$ is continuous, positive, and decreasing on $[1,\infty)$.\\
+If $\int^{\infty}_{1} f(x) dx$ converges, then $\sum_{n=1}^{\infty} a_n$ converges.\\
+If $\int^{\infty}_{1} f(x) dx$ diverges, then $\sum_{n=1}^{\infty} a_n$ diverges.
+
+\textbf{P-Series Test}: $\sum_{n=1}^{\infty} \frac{1}{n^p}$ converges if $p>1$, diverges if $p \leq 1$ \\
+Remainder Estimate for the Integral Test: $\int^{\infty}_{n+1} f(x) dx \leq R_n \leq \int^{\infty}_{n} f(x) dx$
+
+\subsection{The Comparison Tests}
+\textbf{Comparison Test}:\\
+Preconditions: $ \sum a_n$ and $\sum b_n$ are series with positive terms. \\
+If $\sum b_n$ is convergent and $a_n \leq b_n$ for all $n$, then $\sum a_n$ converges.\\
+If $\sum b_n$ is divergent and $a_n \geq b_n$ for all $n$, then $\sum a_n$ diverges.
+
+\textbf{Limit Comparison Test}:\\
+Preconditions: $ \sum a_n$ and $\sum b_n$ are series with positive terms. \\
+If $\lim_{n-> \infty} \frac{a_n}{b_n} = C$ where $C$ is finite and $C > 0$, then both series either converge or both diverge.
+
+\subsection{Alternating Series}
+$\sum_{n=1}^{\infty} (-1)^{n-1} b_n = b - b_2 + b_3 - b_4 + \ldots$ \\
+If $b_{n+1} \leq b_n$ for all $n$ and $\lim_{n -> \infty} b_n = 0$ then the series converges.
+
+\subsection{Absolute Convergence and the Ratio and Root Tests}
+A series is \underline{absolutely convergent} if $\sum |a_n|$ is convergent. \\
+A series is \underline{conditionally convergent} if it is convergent but not absolutely convergent. \\
+If a series is absolutely convergent, then it is convergent. \\
+
+\textbf{Ratio Test}:\\
+If $\lim_{n -> \infty} |\frac{a_{n+1}}{a_n}| = L < 1$, then the series $\sum^{\infty}_{n=1} a_n$ is absolutely convergent.\\
+If $\lim_{n -> \infty} |\frac{a_{n+1}}{a_n}| = L > 1$, then the series $\sum^{\infty}_{n=1} a_n$ is divergent.\\
+If $\lim_{n -> \infty} |\frac{a_{n+1}}{a_n}| = 1$, then the Ratio Test is inconclusive.
+
+\textbf{Root Test}:\\
+If $\lim_{n -> \infty} \sqrt[n]{|a_n|} = L < 1$, then the series $\sum_{n=1}^{\infty} a_n$ is absolutely convergent.\\
+If $\lim_{n -> \infty} \sqrt[n]{|a_n|} = L > 1$ or $lim_{n -> \infty} \sqrt[n]{|a_n|}$, then the series $\sum_{n=1}^{\infty} a_n$ is divergent.\\
+If $\lim_{n -> \infty} \sqrt[n]{|a_n|} = 1$, then the Root Test is inconclusive.
+\end{document}

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>Connecting to the UWPlatt network</title>
+    <title>Infinite Sequences and Series Cheat Sheet</title>
     <link rel="stylesheet" type="text/css" href="../../../style/less/o-blog.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="generator" content="o-blog version 1.2-111-gfab6256"/>
@@ -21,7 +21,7 @@
 <ul class="breadcrumbs">
 	  <ul class="breadcrumb">
   <li><a href="../../../index.html">Home</a> <span class="divider">/</span></li>
-  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2013/03/index.html">03</a> <span class="divider">/</span></li><li>Connecting to the UWPlatt network</li>
+  <li><a href="../../../ioctopus/index.html">I/Octopus</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2013/index.html">2013</a> <span class="divider">/</span></li><li><a href="../../../ioctopus/2013/05/index.html">05</a> <span class="divider">/</span></li><li>Infinite Sequences and Series Cheat Sheet</li>
   </ul>
 
 </ul>
@@ -34,19 +34,19 @@
     <div class="well">
       <div class="row">
 	<div class="date span1">
-	  <div class=" date-d">07</div>
-	  <div class=" date-m"><a href="../../../ioctopus/2013/03/index.html">Mar</a></div>
+	  <div class=" date-d">11</div>
+	  <div class=" date-m"><a href="../../../ioctopus/2013/05/index.html">May</a></div>
 	  <div class=" date-y"><a href="../../../ioctopus/2013/index.html">2013</a>
 	  </div>
 	</div>
 	<div class="span1">
 
 	</div>
-	<h1 class="offset2" style="font-size: 250%">Connecting to the UWPlatt network</h1>
+	<h1 class="offset2" style="font-size: 250%">Infinite Sequences and Series Cheat Sheet</h1>
       </div>
       <nav>
 	<ul class="pager">
-	  <li class="previous"><a href="../../../ioctopus/2013/02/11_clojureclojurescript-notes.html"><i class="icon-chevron-left"></i>&nbsp;Clojure/ClojureScript Notes</a></li><li class="next" style="text-align: right;"><a href="../../../ioctopus/2013/05/11_infinite-sequences-and-series-cheat-sheet.html">Infinite Sequences and Series Cheat Sheet&nbsp;<i class="icon-chevron-right"></i></a></li>
+	  <li class="previous"><a href="../../../ioctopus/2013/03/07_connecting-to-the-uwplatt-network.html"><i class="icon-chevron-left"></i>&nbsp;Connecting to the UWPlatt network</a></li><li class="next">&nbsp;</li>
 	</ul>
       </nav>
     </div>
@@ -54,38 +54,32 @@
   </header>
   <div class="article-content">
     <p>
-Connecting to the UWPlatt wireless network, a network on my university's campus, can be tricky.
-Below is a snippet from my <code>/etc/wpa_supplicant/wpa_supplicant.conf</code>.
-Be sure to replace <code>your_netid_username</code> and <code>your_password</code> with your
-actual username and password.
+Throughout my time tutoring Calculus II, 
+I have found that oftentimes people have a hard time remembering all
+the series tests, so I put together this cheat sheet last year.
 </p>
+<p>
+It contains all of the series tests, not including power series,
+that are covered in Chapter 12 of Stewart Calculus, 6th ed.
+Additionally, important definitions are included.
+</p>
+<p>
+Most people will want the pdf:
+<a href="./series.pdf">series.pdf</a>
+but the source is also availble for modification:
+<a href="./series.tex">series.tex</a>
 
 
 
-<pre class="src src-sh"><span style="color: #dfaf8f;">network</span>={
-        <span style="color: #dfaf8f;">ssid</span>=<span style="color: #cc9393;">"UWPlatt"</span>
-        <span style="color: #dfaf8f;">priority</span>=6
-        <span style="color: #dfaf8f;">proto</span>=RSN
-        <span style="color: #dfaf8f;">pairwise</span>=CCMP
-        <span style="color: #dfaf8f;">group</span>=CCMP
-        <span style="color: #dfaf8f;">key_mgmt</span>=WPA-EAP
-        <span style="color: #dfaf8f;">eap</span>=PEAP
-        <span style="color: #dfaf8f;">identity</span>=<span style="color: #cc9393;">"your_netid_username"</span>
-        <span style="color: #dfaf8f;">anonymous_identity</span>=<span style="color: #cc9393;">"anon"</span>
-        <span style="color: #dfaf8f;">password</span>=<span style="color: #cc9393;">"your_password"</span>
-        <span style="color: #dfaf8f;">phase2</span>=<span style="color: #cc9393;">"auth=MSCHAPv2"</span>
-}
-</pre>
-
-
+</p>
   </div>
   
   <footer class="well article-footer">
-    Posted on <time datetime="2013-03-07T18:30:00Z"> Thursday March, 07 2013 at 18:30:00 UTC</time>.
+    Posted on <time datetime="2013-05-11T17:37:00Z"> Saturday May, 11 2013 at 17:37:00 UTC</time>.
     <nav class="tag-cloud">
       <h1><i class="icon-tags"></i> related tags</h1>
       <ul>
-	
+	<li class="label label-inverse small"><a href="../../../tags/calculus.html">Calculus</a></li><li class="label label-inverse small"><a href="../../../tags/tutoring.html">Tutoring</a></li>
       </ul>
     </nav>
   </footer>

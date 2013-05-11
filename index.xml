@@ -5,7 +5,25 @@
   <link href="http://deckeraa.github.com"/>
   <updated>Lisp error in nil: (wrong-type-argument integerp nil)</updated>
   <id>http://deckeraa.github.comindex.xml</id>
-  <entry><title type="html">Connecting to the UWPlatt network</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/03/07_connecting-to-the-uwplatt-network.html"/><updated>2013-03-07T18:30:00Z</updated><published>2013-03-07T18:30:00Z</published><id>ioctopus/2013/03/07_connecting-to-the-uwplatt-network.html</id><content type="html">&lt;p&gt;
+  <entry><title type="html">Infinite Sequences and Series Cheat Sheet</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/05/11_infinite-sequences-and-series-cheat-sheet.html"/><updated>2013-05-11T17:37:00Z</updated><published>2013-05-11T17:37:00Z</published><id>ioctopus/2013/05/11_infinite-sequences-and-series-cheat-sheet.html</id><category scheme="/tags/calculus.html" term="Calculus" label="Calculus"/><category scheme="/tags/tutoring.html" term="Tutoring" label="Tutoring"/><content type="html">&lt;p&gt;
+Throughout my time tutoring Calculus II, 
+I have found that oftentimes people have a hard time remembering all
+the series tests, so I put together this cheat sheet last year.
+&lt;/p&gt;
+&lt;p&gt;
+It contains all of the series tests, not including power series,
+that are covered in Chapter 12 of Stewart Calculus, 6th ed.
+Additionally, important definitions are included.
+&lt;/p&gt;
+&lt;p&gt;
+Most people will want the pdf:
+&lt;a href="./series.pdf"&gt;series.pdf&lt;/a&gt;
+but the source is also availble for modification:
+&lt;a href="./series.tex"&gt;series.tex&lt;/a&gt;
+
+
+
+&lt;/p&gt;</content></entry><entry><title type="html">Connecting to the UWPlatt network</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/03/07_connecting-to-the-uwplatt-network.html"/><updated>2013-03-07T18:30:00Z</updated><published>2013-03-07T18:30:00Z</published><id>ioctopus/2013/03/07_connecting-to-the-uwplatt-network.html</id><content type="html">&lt;p&gt;
 Connecting to the UWPlatt wireless network, a network on my university's campus, can be tricky.
 Below is a snippet from my &lt;code&gt;/etc/wpa_supplicant/wpa_supplicant.conf&lt;/code&gt;.
 Be sure to replace &lt;code&gt;your_netid_username&lt;/code&gt; and &lt;code&gt;your_password&lt;/code&gt; with your
@@ -28,7 +46,6 @@ actual username and password.
         &lt;span style="color: #dfaf8f;"&gt;phase2&lt;/span&gt;=&lt;span style="color: #cc9393;"&gt;"auth=MSCHAPv2"&lt;/span&gt;
 }
 &lt;/pre&gt;
-
 
 </content></entry><entry><title type="html">Clojure/ClojureScript Notes</title><author><name>nil</name></author><link href="http://deckeraa.github.com/ioctopus/2013/02/11_clojureclojurescript-notes.html"/><updated>2013-02-11T23:58:00Z</updated><published>2013-02-11T23:58:00Z</published><id>ioctopus/2013/02/11_clojureclojurescript-notes.html</id><content type="html">&lt;p&gt;
 These notes document an ongoing project and are not yet complete.
